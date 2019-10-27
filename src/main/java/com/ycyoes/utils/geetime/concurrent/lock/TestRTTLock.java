@@ -3,6 +3,12 @@ package com.ycyoes.utils.geetime.concurrent.lock;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+/**
+ * ReentrantReadWriteLock可重入锁示例
+ * @author ycyoes
+ * @since 2019-10-27 20:53
+ * @version 1.0
+ */
 public class TestRTTLock {
 	private double x, y;
 	private ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
