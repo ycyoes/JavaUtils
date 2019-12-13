@@ -1,4 +1,4 @@
-package com.ycyoes.utils.JavaUtils;
+package com.ycyoes.demos.JavaUtils;
 
 /**
  * Hello world!

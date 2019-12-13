@@ -1,4 +1,4 @@
-package com.ycyoes.utils.geetime.concurrent.lock;
+package com.ycyoes.demos.geetime.concurrent.lock;
 
 import java.util.concurrent.locks.StampedLock;
 
