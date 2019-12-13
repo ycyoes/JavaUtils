@@ -1,4 +1,4 @@
-package com.ycyoes.utils.JavaUtils;
+package com.ycyoes.demos.JavaUtils;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
