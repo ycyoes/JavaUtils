@@ -25,8 +25,10 @@ public class EvenChecker implements Runnable {
         exec.shutdown();
     }
     public void run() {
+        System.out.println("--------Even check------> " + generator.isCanceled());
         while (!generator.isCanceled()) {
             int val = generator.next();
+            System.out.println("val: " + val);
             if (val % 2 != 0) {
                 System.out.println(val + " not even!");
                 generator.cancel(); //Cancels all EvenCheckers
