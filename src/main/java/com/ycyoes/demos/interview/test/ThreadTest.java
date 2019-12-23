@@ -8,7 +8,6 @@ public class ThreadTest {
     }
 }
 
-
 class ThreadA implements Runnable {
     public void run() {
         while (true) {
