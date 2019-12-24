@@ -6,9 +6,9 @@ public class VarTest {
         modify();
     }
     public static void modify(){
-        int i, j = 1, k = 0;
+        int i, j = 2, k = 0;
 //        int i, j, k;    //j,k未初始化，报错
-        i = 100;
+        i = 100_234;
         while(i > 0) {
             i = j * 2;
             System.out.println("The value of j is: " + j);
