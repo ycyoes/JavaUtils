@@ -8,7 +8,13 @@ public class Test {
         Base b = new Sub();
         System.out.println(b.num);
         ReadOnlyClass roc = new ReadOnlyClass();
-        
+        //通过反射修改私有字段值
+        Class<?> cls = ReadOnlyClass.class;
+        Field field = cls.getDeclaredField("age");
+        field.setAccessible(true);
+        field.set(roc, 30);
+        int age = roc.getAge();
+        System.out.println(age);
     }
 }
 
