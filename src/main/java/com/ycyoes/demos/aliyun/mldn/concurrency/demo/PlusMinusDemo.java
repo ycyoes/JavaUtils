@@ -1,5 +1,6 @@
 package com.ycyoes.demos.aliyun.mldn.concurrency.demo;
-//设计4个线程对象，两个线程执行减操作，两个线程执行加操作
+//设计4个线程对象，两个线程执行减操作，两个线程执行加操作(0, 1循环输出)
+//加减线程若无演示输出不对
 public class PlusMinusDemo {
     public static void main(String[] args) {
         Resource res = new Resource();
