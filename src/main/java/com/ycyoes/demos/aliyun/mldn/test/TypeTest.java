@@ -2,7 +2,6 @@ package com.ycyoes.demos.aliyun.mldn.test;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.StringJoiner;
 
 public class TypeTest {
     public static void main(String[] args) {
@@ -25,5 +24,10 @@ public class TypeTest {
         } else {
             System.out.println("B");
         }
+
+        String wechat = "Hollis";
+        String introduce = "每日更新Java相关技术文章";
+        String hollis = wechat.concat(",").concat(introduce);
+
     }
 }
