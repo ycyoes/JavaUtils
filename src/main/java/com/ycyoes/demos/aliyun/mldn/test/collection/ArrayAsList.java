@@ -11,7 +11,12 @@ public class ArrayAsList {
         stringArray[2] = "three";
         List<String> list = Arrays.asList(stringArray);
         System.out.println(list);
-        list.add("four");
+        list.set(0, "zero");
+        System.out.println(stringArray[0]);
+        //报错：java.lang.UnsupportedOperationException
+//        list.add("four");
+//        list.remove(2);
+//        list.clear();
         System.out.println(list);
     }
 }
