@@ -5,33 +5,71 @@ import java.util.concurrent.CountDownLatch;
 /**
  * LeetCode
  * 1114.按序打印
+ * @description 使用CountDownLatch实现
  * @author ycyoes
  *
  */
 public class PrintInOrder {
 	public static void main(String[] args) throws Exception {
 		Foo foo = new Foo();
-		foo.first(new Runnable() {
+		Thread t1 = new Thread(new Runnable() {
 			
 			@Override
 			public void run() {
-				System.out.println("first");
+				try {
+					foo.first(new Runnable() {
+						
+						@Override
+						public void run() {
+							System.out.println("first");
+							
+						}
+					});
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
-		foo.first(new Runnable() {
-					
-					@Override
-					public void run() {
-						System.out.println("two");
-					}
-				});
-		foo.first(new Runnable() {
+		Thread t2 = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					foo.second(new Runnable() {
+						
+						@Override
+						public void run() {
+							System.out.println("second");
+						}
+					});
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		Thread t3 = new Thread(new Runnable() {
 			
 			@Override
 			public void run() {
-				System.out.println("three");
+				try {
+					foo.third(new Runnable() {
+						
+						@Override
+						public void run() {
+							System.out.println("three");
+						}
+					});
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
+		t2.start();
+		t1.start();
+		t3.start();
+		
 	}
 }
 
@@ -43,9 +81,9 @@ class Foo {
     }
 
     public void first(Runnable printFirst) throws InterruptedException {
-        cdl1.countDown();
         // printFirst.run() outputs "first". Do not change or remove this line.
         printFirst.run();
+        cdl1.countDown();
     }
 
     public void second(Runnable printSecond) throws InterruptedException {
