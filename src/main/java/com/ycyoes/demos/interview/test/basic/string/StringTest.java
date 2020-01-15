@@ -7,7 +7,6 @@ public class StringTest {
 		Object obj1 = new Object();
 		System.out.println(obj.equals(obj1));
 		System.out.println(obj == obj1);
-		
 		System.out.println(obj.toString());
 		System.out.println(obj1.toString());
 	}
