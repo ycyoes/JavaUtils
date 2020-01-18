@@ -1,6 +1,7 @@
 package com.ycyoes.demos.basic.reflection;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 /**
  * 获取方法签名
@@ -9,9 +10,14 @@ import java.lang.reflect.Method;
  */
 public class MethodSignature {
 	public static void main(String[] args) throws NoSuchMethodException, SecurityException {
-		Method method = MethodSignature.class.getDeclaredMethod("test");
-		String signature = getSignature(method);
-		System.out.println(signature);
+		Method[] methods = MethodSignature.class.getDeclaredMethods();
+		System.out.println(Arrays.asList(methods));
+		Method noParam = MethodSignature.class.getDeclaredMethod("test");
+		String noParamSignature = getSignature(noParam);
+		System.out.println("无参: " + noParamSignature);
+		Method method = MethodSignature.class.getDeclaredMethod("test", java.lang.String.class);
+		String withParamSignature = getSignature(method);
+		System.out.println(withParamSignature);
 	}
 	
 	private static String getSignature(Method method) {
@@ -29,6 +35,10 @@ public class MethodSignature {
 	  }
 	
 	private void test() {
-		
+		System.out.println("without params");
+	}
+	
+	private void test(String name) {
+		System.out.println(name);
 	}
 }
