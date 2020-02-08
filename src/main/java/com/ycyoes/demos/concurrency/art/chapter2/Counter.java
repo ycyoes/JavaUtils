@@ -1,4 +1,4 @@
-package com.ycyoes.demos.concurrency.art.second;
+package com.ycyoes.demos.concurrency.art.chapter2;
 
 import java.util.ArrayList;
 import java.util.List;

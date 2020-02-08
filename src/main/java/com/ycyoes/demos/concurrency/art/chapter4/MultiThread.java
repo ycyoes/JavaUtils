@@ -1,4 +1,4 @@
-package com.ycyoes.demos.concurrency.art.forth;
+package com.ycyoes.demos.concurrency.art.chapter4;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadInfo;

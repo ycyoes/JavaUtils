@@ -1,4 +1,4 @@
-package com.ycyoes.demos.concurrency.art.first;
+package com.ycyoes.demos.concurrency.art.chapter1;
 
 public class DeadLockDemo {
     private static String A = "A";

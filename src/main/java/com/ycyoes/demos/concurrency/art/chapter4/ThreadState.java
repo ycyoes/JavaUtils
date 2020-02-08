@@ -1,4 +1,4 @@
-package com.ycyoes.demos.concurrency.art.forth;
+package com.ycyoes.demos.concurrency.art.chapter4;
 
 import com.ycyoes.demos.concurrency.art.utils.SleepUtils;
 
