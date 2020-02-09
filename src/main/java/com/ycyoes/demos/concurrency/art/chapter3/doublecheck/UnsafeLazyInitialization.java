@@ -10,5 +10,4 @@ public class UnsafeLazyInitialization {
 		return instance;
 	}
 	
-	static class Instance {}
 }
