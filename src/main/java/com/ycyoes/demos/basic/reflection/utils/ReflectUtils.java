@@ -1,5 +1,7 @@
 package com.ycyoes.demos.basic.reflection.utils;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -8,9 +10,12 @@ import java.util.Optional;
 import java.util.SortedSet;
 import java.util.stream.Collectors;
 
+import com.sun.webkit.Invoker;
+import com.ycyoes.demos.basic.reflection.RichType;
+
 public class ReflectUtils {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NoSuchFieldException, SecurityException {
 		List<String> list = new ArrayList<String>();
 		System.out.println(isCollection(List.class));
 		System.out.println(isCollection(list.getClass()));
@@ -20,6 +25,9 @@ public class ReflectUtils {
 		cls.add(List.class);
 		cls.add(SortedSet.class);
 		System.out.println(getTypes(cls));
+		
+		Field fields = RichType.class.getDeclaredField("richField");
+		System.out.println(fields);
 	}
 
 	/**
