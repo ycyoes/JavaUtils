@@ -1,7 +1,6 @@
 package com.ycyoes.demos.basic.reflection.utils;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -10,7 +9,6 @@ import java.util.Optional;
 import java.util.SortedSet;
 import java.util.stream.Collectors;
 
-import com.sun.webkit.Invoker;
 import com.ycyoes.demos.basic.reflection.RichType;
 
 public class ReflectUtils {
