@@ -14,7 +14,6 @@ import java.util.Map;
  * @author ycyoes
  * @create 2020-03-28 18:24
  *
-
  */
 public class LRUBasedArray<T> {
     private static final int DEFAULT_CAPACITY = 1 << 3;
