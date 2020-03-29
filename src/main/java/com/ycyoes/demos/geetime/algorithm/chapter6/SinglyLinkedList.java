@@ -268,7 +268,7 @@ public class SinglyLinkedList {
         Node next = null;
         while (r != p) {
             next = r.next;
-            r.next = pre;
+            r.next = pre;   //链表指针反向
             pre = r;
             r = next;
         }
