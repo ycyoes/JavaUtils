@@ -1,12 +1,9 @@
 package com.ycyoes.sources.mybatis.reflection;
 
 import com.ycyoes.demos.basic.reflection.DiyVideoYoutubeAuth;
-import com.ycyoes.demos.basic.reflection.RichType;
 
 import java.lang.reflect.Field;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * java类型判断
