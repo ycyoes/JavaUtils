@@ -32,6 +32,8 @@ public class RichType {
 	private Map richMap = new HashMap();
 
 	private List richList=new ArrayList(){{add("bar");}};
+	
+	public RichType() {}
 
 	public RichType getRichType() {
 		return richType;
