@@ -7,6 +7,9 @@ public class TypeTest {
 	public static void main(String[] args) {
 		RichType richType = getInstance(RichType.class);
 		System.out.println(richType.getRichProperty());
+		//null可直接转为类类型
+		RichType rType = (RichType)null;
+		System.out.println(rType);
 	}
 	
 	/**
@@ -18,6 +21,7 @@ public class TypeTest {
 	 */
 	public static <T> RichType getInstance(Class<?> cls) {
 		try {
+//			获得空参的构造方法
 			Constructor<?> c = cls.getConstructor();
 			return (RichType)c.newInstance();
 		} catch (Exception e) {
