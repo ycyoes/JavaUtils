@@ -1,5 +1,8 @@
 package com.ycyoes.test.entity;
 
+import java.util.Comparator;
+import java.util.Date;
+
 /**
  * 实体类
  *
@@ -7,6 +10,15 @@ package com.ycyoes.test.entity;
 public class Student {
     private Long age;
     private String name;
+    private Date createDate;
+
+    public Student() {}
+
+    public Student(Long age, String name, Date createDate) {
+        this.age = age;
+        this.name = name;
+        this.createDate = createDate;
+    }
 
     public Long getAge() {
         return age;
@@ -22,5 +34,28 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "age=" + age +
+                ", name='" + name + '\'' +
+                ", createDate=" + createDate +
+                '}';
+    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        return false;
     }
 }
