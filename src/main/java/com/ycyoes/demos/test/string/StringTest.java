@@ -1,11 +1,13 @@
 package com.ycyoes.demos.test.string;
 
-import java.util.Locale;
-import java.util.regex.Pattern;
+import java.io.*;
+import java.net.URL;
+import java.util.*;
+import java.util.jar.JarEntry;
+import java.util.jar.JarInputStream;
 
 public class StringTest {
-	private static Pattern humpPattern = Pattern.compile("[A-Z]");
-	private static Pattern linePattern = Pattern.compile("_(\\w)");
+
 	public static void main(String[] args) {
 		String propName = "richType";
 		System.out.println(propName.toUpperCase(Locale.ENGLISH));
@@ -16,6 +18,13 @@ public class StringTest {
 		System.out.println(fName.substring(0, index));
 		System.out.println(fName.substring(index+1, index+2).toUpperCase());
 		System.out.println(fName.substring(index+2));
+
+		String fqn = "com.ycyoes.demos.test.string.StringTest";
+		String externalName = fqn.substring(0, fqn.indexOf('.')).replace('/', '.');
+		System.out.println(externalName);
+		System.out.println(fqn.replace('.', '/'));
 	}
+
+
 
 }

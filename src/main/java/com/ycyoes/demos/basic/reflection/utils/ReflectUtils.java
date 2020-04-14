@@ -8,16 +8,19 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import com.ycyoes.demos.basic.reflection.RichType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static com.ycyoes.utils.StringUtils.lineToHump;
 
 public class ReflectUtils {
-	
+	private static Logger logger = LoggerFactory.getLogger(ReflectUtils.class);
+
 	public static void main(String[] args) throws NoSuchFieldException, SecurityException {
 		List<String> list = new ArrayList<String>();
 		System.out.println(isCollection(List.class));
 		System.out.println(isCollection(list.getClass()));
-		
+
 		List<Class<?>> cls = new ArrayList<Class<?>>();
 		cls.add(Object.class);
 		cls.add(List.class);
@@ -56,6 +59,7 @@ public class ReflectUtils {
 	 */
 	public static <T> List<T> resultSetToEntity(ResultSet rs, Class<T> clz) throws Exception{
 		if (rs == null) {
+			logger.warn("ResultSet为空.");
 			return Collections.EMPTY_LIST;
 		}
 		List<T> list = new ArrayList<>();
