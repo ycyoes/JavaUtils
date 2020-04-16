@@ -33,9 +33,9 @@ public class InitTest {
         RichType richType = objectFactory.create(RichType.class);
         Reflector reflector = new Reflector(RichType.class);
         Invoker invoker = reflector.getSetInvoker("richField");
-        invoker.invoke(richType, new Object[] {"richField"});
-        invoker = reflector.getGetInvoker("richType");
-        System.out.println("richType = " + invoker.invoke(richType, null));
+        invoker.invoke(richType, new Object[] {"set richField"});
+        invoker = reflector.getGetInvoker("richField");
+        System.out.println("richField = " + invoker.invoke(richType, null));
     }
 
 
