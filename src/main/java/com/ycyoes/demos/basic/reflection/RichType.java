@@ -66,4 +66,12 @@ public class RichType {
 	public void setRichMap(Map richMap) {
 		this.richMap = richMap;
 	}
+
+	public String getRichField() {
+		return richField;
+	}
+
+	public void setRichField(String richField) {
+		this.richField = richField;
+	}
 }
