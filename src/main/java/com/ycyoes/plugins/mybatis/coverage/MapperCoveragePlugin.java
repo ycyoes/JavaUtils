@@ -1,4 +1,4 @@
-package com.ycyoes.plugins.mybatis;
+package com.ycyoes.plugins.mybatis.coverage;
 
 
 import java.io.IOException;
@@ -7,6 +7,8 @@ import java.lang.reflect.Proxy;
 import java.util.Properties;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import com.ycyoes.plugins.mybatis.coverage.CoverageResult;
 import org.apache.ibatis.cache.CacheKey;
 import org.apache.ibatis.executor.BaseExecutor;
 import org.apache.ibatis.executor.CachingExecutor;

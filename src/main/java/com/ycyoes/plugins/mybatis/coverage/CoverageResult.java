@@ -1,4 +1,4 @@
-package com.ycyoes.plugins.mybatis;
+package com.ycyoes.plugins.mybatis.coverage;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
