@@ -41,4 +41,46 @@ public class StringUtils {
         String uuid = getUuid();
         System.out.println(uuid);
     }
+
+    public static String underlineToCamel(String line, boolean smallCamel) {
+        if (line != null && !"".equals(line)) {
+            StringBuffer sb = new StringBuffer();
+            Pattern pattern = Pattern.compile("([A-Za-z\\d]+)(_)?");
+            Matcher matcher = pattern.matcher(line);
+
+            while(matcher.find()) {
+                String word = matcher.group();
+                sb.append(smallCamel && matcher.start() == 0 ? Character.toLowerCase(word.charAt(0)) : Character.toUpperCase(word.charAt(0)));
+                int index = word.lastIndexOf(95);
+                if (index > 0) {
+                    sb.append(word.substring(1, index).toLowerCase());
+                } else {
+                    sb.append(word.substring(1).toLowerCase());
+                }
+            }
+
+            return sb.substring(0, 1).toUpperCase() + sb.substring(1);
+        } else {
+            return "";
+        }
+    }
+
+    public static String camelToUnderline(String line) {
+        if (line != null && !"".equals(line)) {
+            line = String.valueOf(line.charAt(0)).toUpperCase().concat(line.substring(1));
+            StringBuffer sb = new StringBuffer();
+            Pattern pattern = Pattern.compile("[A-Z]([a-z\\d]+)?");
+            Matcher matcher = pattern.matcher(line);
+
+            while(matcher.find()) {
+                String word = matcher.group();
+                sb.append(word.toUpperCase());
+                sb.append(matcher.end() == line.length() ? "" : "_");
+            }
+
+            return sb.toString();
+        } else {
+            return "";
+        }
+    }
 }
