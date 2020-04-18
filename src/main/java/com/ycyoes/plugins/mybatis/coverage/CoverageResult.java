@@ -23,7 +23,7 @@ public class CoverageResult {
         }
     };
     transient boolean fileExsits;
-    ConcurrentHashSet<String> coveredIds = new ConcurrentHashSet();
+    ConcurrentHashSet<String> coveredIds = new ConcurrentHashSet<String>();
     float coveragePercent;
     Set<String> allMapperIds;
     Set<String> uncoveredIds;
