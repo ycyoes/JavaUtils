@@ -1,5 +1,6 @@
 package com.ycyoes.utils;
 
+import java.util.Objects;
 import java.util.Random;
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -82,5 +83,9 @@ public class StringUtils {
         } else {
             return "";
         }
+    }
+    
+    public static boolean equalTo(Object a, Object b) {
+    	return Objects.equals(a, b);
     }
 }
