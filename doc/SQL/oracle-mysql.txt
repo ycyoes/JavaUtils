@@ -1,0 +1,2 @@
+            oracle              mysql
+sql正则      REGEXP_INSTR       REGEXP
