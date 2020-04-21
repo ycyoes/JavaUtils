@@ -58,5 +58,9 @@ public class ListTest {
         Collections.sort(ls, bya.thenComparing(byb));
         ls.stream().forEach(System.out::println);
 
+        List<Object> list2 = new ArrayList<>();
+        list2.add("");
+        list2.add("");
+        System.out.println(list2.size());
     }
 }

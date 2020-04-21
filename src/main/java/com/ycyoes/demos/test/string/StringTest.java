@@ -1,12 +1,10 @@
 package com.ycyoes.demos.test.string;
 
-import java.io.*;
-import java.net.URL;
+import java.text.MessageFormat;
 import java.util.*;
-import java.util.jar.JarEntry;
-import java.util.jar.JarInputStream;
 
 public class StringTest {
+	public static String READER_REGION_PATTERN = "(^|@){0}($|@)";
 
 	public static void main(String[] args) {
 		String propName = "richType";
@@ -23,8 +21,14 @@ public class StringTest {
 		String externalName = fqn.substring(0, fqn.indexOf('.')).replace('/', '.');
 		System.out.println(externalName);
 		System.out.println(fqn.replace('.', '/'));
+
+		String visitorCountryKey = "Canada";
+		String format = messageFormat(READER_REGION_PATTERN, visitorCountryKey);
+		System.out.println(format);
 	}
 
-
+	public static String messageFormat(String pattern, String val) {
+		return MessageFormat.format(READER_REGION_PATTERN, val);
+	}
 
 }
