@@ -1,0 +1,35 @@
+addSceneInfo	,	/scene	,	post请求，编辑公司场景
+getDiyItemList	,	/diyItemDetail	,	0
+exsitScenePic	,	0	,	0
+getSwrcatInfoId	,	/scene	,	post请求，编辑公司场景
+getDiyVideo	,	/diyItemDetail	,	0
+getQrInfo	,	/showroom/~!userName!~/contactinfo/~!commoninfo!~.html	,	0
+getDiyItem	,	/diyItemDetail	,	0
+listScenePicForEdit	,	/scene	,	get请求，获取公司场景json
+listFileMemberPicInfo	,	/scene	,	post请求，编辑公司场景
+updateSceneDisplayOrder	,	/scene	,	post请求，编辑公司场景
+insertSwrCatInfo2His	,	0	,	0
+getComSceneDraftPicCount	,	0	,	0
+deleteSwrcatInfoDraft	,	0	,	0
+addFileMemberPicInfo	,	/diy/saveOrUpdateContent	,	post,ajax请求入参：menuEncryId, id, name, descript, selfPicId, photoIdStr
+querySwrcatPicInfoListByComId	,	/factoryTour	,	book.jsp-form表单post请求
+getComScenePicCount	,	0	,	0
+queryAllSceneInfo4Draft	,	0	,	0
+addInfoSwrcatInfoDraft	,	0	,	0
+deleteAllSceneInfo	,	0	,	0
+getDimensionalCodeInfo	,	/showroom/~!userName!~/contactinfo/~!commoninfo!~.html	,	0
+deleteAllSwrcatInfoDraft	,	0	,	0
+getFileMemberPicInfo	,	/diy/list	,	查询自定义栏目列表,get请求无入参
+updateFileMemberPicInfo	,	0	,	0
+querySwrcatInfoDraftListByComId	,	/showroom/~!userName!~/companyinfo/~!comName!~.html	,	0
+updateOrderForSwrcatInfoDraft	,	0	,	0
+batchAddSwrcatInfoDraft	,	0	,	0
+saveOrUpdateSceneInfoUseDraft	,	0	,	0
+getDiyVideoListByComId	,	0	,	0
+deleteFileMemberPicInfo	,	/diy/saveOrUpdateContent	,	post,ajax请求入参：menuEncryId, id, name, descript, selfPicId, photoIdStr
+getDiyItemListWithDesc	,	/showroom/~!userName!~/companyinfo/~!comName!~.html	,	0
+deleteSceneInfoNotInIds	,	0	,	0
+querySwrcatInfoListByComId(Long comId)	,	/scene	,	post
+querySwrcatInfoListByComId(Long comId, boolean logonStatus)	,	0	,	0
+getRelatedDiyItemList	,	/diyItemDetail	,	0
+addFileMemberPicInfoForQR	,	UpdateBusinessCardQrTask	,	定时任务

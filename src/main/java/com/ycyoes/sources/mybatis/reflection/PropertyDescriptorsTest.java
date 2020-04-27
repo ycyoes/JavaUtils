@@ -13,5 +13,7 @@ public class PropertyDescriptorsTest {
         System.out.println(readMethod.getName());
         Method writeMethod = propertyDescriptor.getWriteMethod();
         System.out.println(writeMethod.getName());
+
+
     }
 }
