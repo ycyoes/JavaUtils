@@ -7,5 +7,6 @@ public class Test {
         String first = ss[1].trim();
         System.out.println(first + "1");
         System.out.println("0".equals(first));
+
     }
 }
