@@ -24,6 +24,7 @@ public class SafeHashMap {
         Field size = clz.getDeclaredField("size");
         size.setAccessible(true);
         System.out.println("size: " + size.get(map));
+
     }
 
 
