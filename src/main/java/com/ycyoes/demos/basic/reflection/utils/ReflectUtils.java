@@ -11,7 +11,7 @@ import com.ycyoes.demos.basic.reflection.RichType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static com.ycyoes.utils.StringUtils.lineToHump;
+import static com.ycyoes.utils.test.StringUtils.lineToHump;
 
 public class ReflectUtils {
 	private static Logger logger = LoggerFactory.getLogger(ReflectUtils.class);
