@@ -53,5 +53,12 @@ public class LambdaTest {
                 .filter(world -> world.length() > 0).collect(Collectors.toList());
         System.out.println("单词: ");
         list3.forEach(System.out::println);
+
+        //4. Stream流的limit使用
+        Random rd = new Random();
+        System.out.println("取前三条数据： ");
+        rd.ints().limit(3).forEach(System.out::println);
+
+
     }
 }
