@@ -1,9 +1,8 @@
 package com.ycyoes.test.jdk8;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class LambdaTest {
     public static void main(String[] args) {
@@ -34,5 +33,25 @@ public class LambdaTest {
 
         System.out.println("list-lambda表达式双冒号遍历： ");
         list.forEach(System.out::println);
+
+        //1. 构造Stream流的方式
+        Stream stream = Stream.of("a", "b", "c");
+        String[] strArray = new String[] {"a", "b", "c"};
+        stream = Stream.of(strArray);
+        stream = Arrays.stream(strArray);
+        List<String> streamList = Arrays.asList(strArray);
+        stream = streamList.stream();
+
+        //2. Stream流之间的转换
+
+        //3. Stream流的flatMap使用
+        //flatMap方法用于映射每个元素到对应的结果，一对多
+        String worlds = "The way of the future";
+        List<String> list2 = new ArrayList<>();
+        list2.add(worlds);
+        List<String> list3 = list2.stream().flatMap(str -> Stream.of(str.split(" ")))
+                .filter(world -> world.length() > 0).collect(Collectors.toList());
+        System.out.println("单词: ");
+        list3.forEach(System.out::println);
     }
 }
