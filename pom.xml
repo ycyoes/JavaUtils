@@ -29,7 +29,7 @@
     <json.version>20180130</json.version>
     <fastjson.version>1.2.67</fastjson.version>
     <ant.version>1.9.7</ant.version>
-    <oracle.driver.version>10.2.0.4.0</oracle.driver.version>
+    <oracle.driver.version>11.2.0.3</oracle.driver.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -251,7 +251,7 @@
       <artifactId>ojdbc14</artifactId>
       <version>${oracle.driver.version}</version>
       <scope>system</scope>
-      <systemPath>${project.basedir}/src/main/resources/lib/ojdbc14-10.2.0.4.0.jar</systemPath>
+      <systemPath>${project.basedir}/src/main/resources/lib/ojdbc6-11.2.0.3.jar</systemPath>
     </dependency>
 
     <dependency>
