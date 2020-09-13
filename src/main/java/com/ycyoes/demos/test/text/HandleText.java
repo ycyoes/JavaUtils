@@ -33,6 +33,12 @@ public class HandleText {
         return this.getClass().getClassLoader().getResource("/").getPath();
     }
 
+    /**
+     * 逐行读取文件
+     *
+     * @param name  文件全路径
+     * @return
+     */
     public static List<String> readFile(String name) {
         // 使用ArrayList来存储每行读取到的字符串
         List<String> arrayList = new ArrayList<>();
@@ -52,4 +58,5 @@ public class HandleText {
         }
         return arrayList;
     }
+
 }
