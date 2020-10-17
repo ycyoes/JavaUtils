@@ -1,5 +1,6 @@
 package com.ycyoes.biz.dataprocess;
 
+import com.ycyoes.common.io.FileUtils;
 import com.ycyoes.utils.StringUtils;
 
 import java.util.HashMap;
@@ -101,24 +102,28 @@ public class FamilyRelationImport {
         String name = "D:/fengdong.csv";
         System.out.println(name);
         List<String> list = readFile(name);
+//        System.out.println("总长度: " + list.size());
 //        list.stream().forEach(System.out::println);
+        StringBuilder sb = new StringBuilder();
         for(int i = 0; i < list.size(); i++) {
 //            System.out.println(list.get(i));
             String personInfo = list.get(i).trim().replaceAll(" ", "");
             if (StringUtils.isNotBlank(personInfo)) {
                 String[] personInfos = list.get(i).split(",");
-                if(personInfos.length < 4) {
-                    System.out.println("length: " + personInfos.length + " " + list.get(i));
-                    System.out.println("i: " + i + " " + personInfos[2] + " 信息不全！");
+                if(personInfos.length < 5) {
+//                    System.out.println("length: " + personInfos.length + " " + list.get(i));
+                    System.out.println("i: " + i + " " + personInfos[0] + " " + personInfos[2] + " 信息不全！");
                 } else {
 //                    System.out.println("length: " + personInfos.length + " i: " + i + " 2:" + personInfos[3].trim());
 //                    System.out.println(list.get(i));
-                    Integer relationVal = relationMap.get(personInfos[3].trim());
+                    Integer relationVal = relationMap.get(personInfos[4].trim());
                     if(relationVal == null) {
-                        System.out.println("i: " + i + " " + personInfos[1] + " 未匹配到值！");
+                        System.out.println("i: " + i + " " + personInfos[0] + " " + personInfos[1] + " 未匹配到值！");
                     }
+                    sb.append(personInfos[0].trim() + "," + personInfos[1].trim() + "," + personInfos[2].trim() + "," + personInfos[3].trim() + "," + personInfos[4].trim() + "," + relationVal + "\n");
 //                    System.out.println(relationVal);
                 }
+                    FileUtils.writeToFile("D:/test.csv", sb.toString(), false);
 
             }
 
