@@ -126,7 +126,7 @@ public class MemberData {
 //                            System.out.println(personInfos[0].trim() + "," + personInfos[1].trim() + "," + personInfos[2].trim() + "," + personInfos[3].trim() + "," + personInfos[4].trim() + "," + relationVal);
                         }
 //                        sb.append(personInfos[0].trim() + "," + personInfos[1].trim() + "," + personInfos[2].trim() + "," + personInfos[3].trim() + "," + personInfos[4].trim() + "," + relationVal + "\n");
-                        sb.append(personInfos[0].trim() + "," + relationVal + "\n");
+                        sb.append(personInfos[0].trim() + "," + personInfos[2].trim() + "," + relationVal + "\n");
                     }
 
 //                    System.out.println(relationVal);
