@@ -9,6 +9,9 @@ import java.util.Map;
 
 import static com.ycyoes.demos.test.text.HandleText.readFile;
 
+/**
+ * 获取户主身份证号
+ */
 public class FamilyRelationImport {
 
     public static void main(String[] args) {
@@ -100,7 +103,6 @@ public class FamilyRelationImport {
 
         //String name = System.getProperty("user.dir") + "\\src\\main\\java\\com\\ycyoes\\demos\\test\\text\\";
         String name = "D:/fengdong.csv";
-        System.out.println(name);
         List<String> list = readFile(name);
 //        System.out.println("总长度: " + list.size());
 //        list.stream().forEach(System.out::println);
@@ -111,23 +113,32 @@ public class FamilyRelationImport {
             if (StringUtils.isNotBlank(personInfo)) {
                 String[] personInfos = list.get(i).split(",");
                 if(personInfos.length < 5) {
-//                    System.out.println("length: " + personInfos.length + " " + list.get(i));
+                    System.out.println("length: " + personInfos.length + " " + list.get(i));
                     System.out.println("i: " + i + " " + personInfos[0] + " " + personInfos[2] + " 信息不全！");
                 } else {
 //                    System.out.println("length: " + personInfos.length + " i: " + i + " 2:" + personInfos[3].trim());
 //                    System.out.println(list.get(i));
-                    Integer relationVal = relationMap.get(personInfos[4].trim());
-                    if(relationVal == null) {
-                        System.out.println("i: " + i + " " + personInfos[0] + " " + personInfos[1] + " 未匹配到值！");
+                    String cardNum = personInfos[2].trim();
+                    if (cardNum.length() == 18) {
+                        Integer relationVal = relationMap.get(personInfos[4].trim());
+                        if(relationVal == null) {
+                            System.out.println("i: " + i + " " + personInfos[0] + " " + personInfos[1] + " 未匹配到值！");
+                        }
+                        if (relationVal == 0) {
+//                            sb.append(personInfos[0].trim() + "," + personInfos[4].trim() + "\n");
+                            sb.append(personInfos[0].trim() + "\n");
+                        }
                     }
-                    sb.append(personInfos[0].trim() + "," + personInfos[1].trim() + "," + personInfos[2].trim() + "," + personInfos[3].trim() + "," + personInfos[4].trim() + "," + relationVal + "\n");
+
+                    //sb.append(personInfos[0].trim() + "," + personInfos[1].trim() + "," + personInfos[2].trim() + "," + personInfos[3].trim() + "," + personInfos[4].trim() + "," + relationVal + "\n");
 //                    System.out.println(relationVal);
                 }
-                    FileUtils.writeToFile("D:/test.csv", sb.toString(), false);
 
             }
 
         }
+                    System.out.println(sb.toString());
+//                    FileUtils.writeToFile("D:/test.csv", sb.toString(), false);
 
     }
 }
