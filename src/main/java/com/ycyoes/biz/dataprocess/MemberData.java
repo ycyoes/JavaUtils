@@ -122,11 +122,11 @@ public class MemberData {
                     } else if(relationVal != 0) {
                         String cardNum = personInfos[0].trim();
                         if (cardNum.length() < 18) {
-//                            System.out.println("l: " + i + " 身份证号不符合规范 " + cardNum);
-                            System.out.println(personInfos[0].trim() + "," + personInfos[1].trim() + "," + personInfos[2].trim() + "," + personInfos[3].trim() + "," + personInfos[4].trim() + "," + relationVal);
+//                            System.out.println("l: " + i + " 身份证号不符合规范 " + cardNum + " len: " + cardNum.length());
+//                            System.out.println(personInfos[0].trim() + "," + personInfos[1].trim() + "," + personInfos[2].trim() + "," + personInfos[3].trim() + "," + personInfos[4].trim() + "," + relationVal);
                         }
 //                        sb.append(personInfos[0].trim() + "," + personInfos[1].trim() + "," + personInfos[2].trim() + "," + personInfos[3].trim() + "," + personInfos[4].trim() + "," + relationVal + "\n");
-                        sb.append(personInfos[0].trim() + "," + personInfos[3].trim() + "\n");
+                        sb.append(personInfos[0].trim() + "," + relationVal + "\n");
                     }
 
 //                    System.out.println(relationVal);
@@ -135,8 +135,8 @@ public class MemberData {
             }
 
         }
-//                    System.out.println("personInfo: " + sb.toString());
-//                FileUtils.writeToFile("D:/member.csv", sb.toString(), false);
+                    System.out.println("personInfo: " + sb.toString());
+                FileUtils.writeToFile("D:/member.csv", sb.toString(), false);
 
     }
 }
