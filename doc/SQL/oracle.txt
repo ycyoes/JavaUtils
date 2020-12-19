@@ -1,0 +1,2 @@
+1. 查看表结构
+select * from user_tab_columns where table_name='ZZ2_DZ_HOUSE'
