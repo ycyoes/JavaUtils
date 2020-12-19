@@ -1,2 +1,6 @@
 1. 查看表结构
 select * from user_tab_columns where table_name='ZZ2_DZ_HOUSE'
+2. 创建临时表
+with temp as ()
+with as 相当于虚拟视图。
+with as短语，也叫做子查询部分(subquery factoring)，可以让你做很多事情，定义一个sql片断，该sql片断会被整个sql语句所用到。
