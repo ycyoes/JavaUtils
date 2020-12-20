@@ -5,6 +5,8 @@ import static java.lang.Thread.sleep;
 
 /**
  * join()的使用
+ * @author ycyoes
+ * @date 2020-12-19
  */
 public class JoinTest implements Runnable {
     public static void main(String[] args) throws InterruptedException {
