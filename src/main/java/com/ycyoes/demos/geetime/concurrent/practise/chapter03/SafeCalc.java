@@ -7,7 +7,7 @@ package com.ycyoes.demos.geetime.concurrent.practise.chapter03;
  */
 public class SafeCalc {
     long value = 0L;
-    long get() {
+    synchronized long get() {
         return value;
     }
     synchronized void addOne() {
