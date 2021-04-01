@@ -1,6 +1,6 @@
 package com.ycyoes.utils.zy;
 
-import org.jeecg.common.util.RestUtil;
+import com.ycyoes.utils.zy.RestUtil;
 import org.springframework.http.HttpMethod;
 
 import com.alibaba.fastjson.JSONArray;

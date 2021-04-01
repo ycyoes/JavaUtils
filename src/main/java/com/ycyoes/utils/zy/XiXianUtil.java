@@ -197,8 +197,7 @@ public class XiXianUtil {
 					return result;
 
 				}
-		
-	
+
 	// 根据网格员id获取网格信息
 	public static JSONObject gridInfoByUserId(String xinquCode, String userId) {
 		JSONObject result = new JSONObject();
