@@ -3,7 +3,7 @@ package com.ycyoes.utils.zy;
 import java.util.ArrayList;
 import java.util.Date;
 
-import org.jeecg.common.util.RestUtil;
+import com.ycyoes.utils.zy.RestUtil;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -82,7 +82,8 @@ public class XiXianUtil {
 				cityPlace.put("placeType", placeType);
 			}
 
-			String jsonS = XixianRestUtil.get(server + cityPlaceQuery, cityPlace);
+//			String jsonS = XixianRestUtil.get(server + cityPlaceQuery, cityPlace);
+			String jsonS = null;
 			result = JSONObject.parseObject(jsonS);
 			return result;
 		}
@@ -103,7 +104,8 @@ public class XiXianUtil {
 				result.put("id", "id不能为空!");
 				return result;
 			}
-			String jsonS = XixianRestUtil.get(server + cityPlaceDetails, Details);
+//			String jsonS = XixianRestUtil.get(server + cityPlaceDetails, Details);
+			String jsonS = null;
 			result = JSONObject.parseObject(jsonS);
 			return result;
 		}
@@ -117,7 +119,8 @@ public class XiXianUtil {
 						result.put("deptId", "deptId不能为空!");
 						return result;
 					}
-					String jsonS = XixianRestUtil.get(server + getGridHierarchy, Details);
+//					String jsonS = XixianRestUtil.get(server + getGridHierarchy, Details);
+					String jsonS = null;
 					result = JSONObject.parseObject(jsonS);
 					return result;
 				}
@@ -130,7 +133,8 @@ public class XiXianUtil {
 			JSONObject createCall = new JSONObject();
 			createCall.put("deptId", gird);
 			createCall.put("total", 1);
-			String jsonS = XixianRestUtil.get(server + memberListByGird, createCall);
+//			String jsonS = XixianRestUtil.get(server + memberListByGird, createCall);
+			String jsonS = null;
 			result = JSONObject.parseObject(jsonS);
 		} else {
 			result.put("data", "gird不能为空!");
@@ -152,7 +156,8 @@ public class XiXianUtil {
 			JSONObject createCall = new JSONObject();
 			createCall.put("userId", userId);
 			createCall.put("code", xinquCode);
-			String jsonS = XixianRestUtil.get(server + girdMemberInfoByUserId, createCall);
+//			String jsonS = XixianRestUtil.get(server + girdMemberInfoByUserId, createCall);
+			String jsonS = null;
 			result = JSONObject.parseObject(jsonS);
 		}
 		return result;
@@ -172,7 +177,8 @@ public class XiXianUtil {
 				JSONObject createCall = new JSONObject();
 				createCall.put("x", lng);
 				createCall.put("y", lat);
-				String jsonS = XixianRestUtil.get(server + getPlaceInfoListByZuoBiao, createCall);
+//				String jsonS = XixianRestUtil.get(server + getPlaceInfoListByZuoBiao, createCall);
+				String jsonS = null;
 				result = JSONObject.parseObject(jsonS);
 			}
 			return result;
@@ -191,7 +197,8 @@ public class XiXianUtil {
 						JSONObject createCall = new JSONObject();
 						createCall.put("x", lng);
 						createCall.put("y", lat);
-						String jsonS = XixianRestUtil.get(server + getGridListByZuoBiao, createCall);
+//						String jsonS = XixianRestUtil.get(server + getGridListByZuoBiao, createCall);
+						String jsonS = null;
 						result = JSONObject.parseObject(jsonS);
 					}
 					return result;
@@ -211,7 +218,8 @@ public class XiXianUtil {
 			JSONObject createCall = new JSONObject();
 			createCall.put("userId", userId);
 			createCall.put("code", xinquCode);
-			String jsonS = XixianRestUtil.get(server + gridInfoByUserId, createCall);
+//			String jsonS = XixianRestUtil.get(server + gridInfoByUserId, createCall);
+			String jsonS = null;
 			result = JSONObject.parseObject(jsonS);
 		}
 		return result;
@@ -230,7 +238,8 @@ public class XiXianUtil {
 			JSONObject createCall = new JSONObject();
 			createCall.put("depId", depId);
 			createCall.put("total", 1);
-			String jsonS = XixianRestUtil.get(server + deptUserListByDepId, createCall);
+//			String jsonS = XixianRestUtil.get(server + deptUserListByDepId, createCall);
+			String jsonS = null;
 			result = JSONObject.parseObject(jsonS);
 		} else {
 			result.put("data", "depId不能为空!");
@@ -245,7 +254,8 @@ public class XiXianUtil {
 		if (objCode != null && !objCode.equals("")) {
 			JSONObject createCall = new JSONObject();
 			createCall.put("objCode", objCode);
-			String jsonS = XixianRestUtil.get(server + cityComponentsDetailsById, createCall);
+//			String jsonS = XixianRestUtil.get(server + cityComponentsDetailsById, createCall);
+			String jsonS = null;
 			result = JSONObject.parseObject(jsonS);
 		} else {
 			result.put("data", "depId不能为空!");
@@ -293,16 +303,19 @@ public class XiXianUtil {
 			arr.add(Timestamp);
 			arr.add(UserId);
 			// 按值字典排序
-			String codeSort = RestUtil.sort(arr);
+//			String codeSort = RestUtil.sort(arr);
+			String codeSort = "";
 			// SHA-1加密生成Signature
-			String Signature = RestUtil.sha(codeSort);
+//			String Signature = RestUtil.sha(codeSort);
+			String Signature = "";
 			token=UserId+"_"+Timestamp+"_"+Signature;
 			return token;
 		}
 	// 根据组件id查询组件详情
 	public static JSONObject eventCountByXinCheng() {
 		JSONObject result = new JSONObject();
-		String jsonS = XixianRestUtil.get(server + eventCountByXinCheng);
+//		String jsonS = XixianRestUtil.get(server + eventCountByXinCheng);
+		String jsonS = null;
 		result = JSONObject.parseObject(jsonS);
 		return result;
 	}
