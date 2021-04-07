@@ -1,5 +1,6 @@
 var axios = require('axios');
 var sha = require('sha1');
+var qs = require('qs');
 
 const ip="http://111.19.144.40";
 const prot=":8089";
@@ -11,24 +12,63 @@ const zhenYouUserName = "504shq";
 const zhenYouPassword = "Nucleus!";
 const imei = zhenYouUserName;
 
-let loginParam = {
+/*let loginParam = {
 	"userName": zhenYouUserName,
 	"password": zhenYouPassword,
 	"imei": imei
-};
+};*/
+let loginParam = new Map();
+loginParam.set("userName",zhenYouUserName)
+    .set("password",zhenYouPassword)
+    .set("imei", imei)
+
+
 console.log('登录请求参数：', loginParam);
 console.log('sha: ', sha('test'))
 console.log(random(10, {letters:false}));
 console.log(new Date().getTime());
 
-//axios.post({url: server + "/nuas/api/v1/sessions", loginParam},
-//	function(error, response, body) {
-//    console.log(error,response,body)
-//})
 
-let map = formHeaderParams();
-console.log(typeof map);
-console.log(strMapToJson(map));
+
+
+
+login()
+
+//登录
+function login() {
+    //封装请求头测试
+    let map = formHeaderParams();
+    // console.log(typeof map);
+    console.log(strMapToJson(map));
+    const headers = strMapToJson(map);
+    const requestUrl = server + "/nuas/api/v1/sessions";
+    console.log('request login url: ', requestUrl + ' loginParam: ', loginParam
+    , ' \r\n headers: ', strMapToJson(map))
+    // axios.post(url, {data: qs.stringify(strMapToObj(loginParam)), headers: strMapToJson(map)}).then(function(response) {
+    /*axios.post(requestUrl, {data:qs.stringify(strMapToObj(loginParam)), headers:strMapToJson(map)}).then(function(response) {
+        console.log('----------response data: ', response.data);
+        // console.log(response.status);
+        // console.log(response.statusText);
+        // console.log(response.headers);
+        console.log('-----config: ', response.config);
+    })*/
+
+    var instance = axios.create({
+        headers: JSON.parse(strMapToJson(map))
+    });
+
+    instance.post(requestUrl, strMapToObj(loginParam)).then(function(response) {
+        console.log('----------response data: ', response.data);
+        // console.log(response.status);
+        // console.log(response.statusText);
+        // console.log(response.headers);
+        console.log('-----config: ', response.config);
+    }).catch(function (err)  {
+        console.log("reject: ", err)
+    })
+
+
+}
 
 /**
  * 组装请求头参数
@@ -59,7 +99,8 @@ function formHeaderParams(mediaType) {
 	headerMap.set('X-Signature', signature)
 		.set('X-Timestamp', timestamp)
 		.set('X-Nonce', nonce)
-		.set('Accept', formMediaType);
+		.set('Accept', formMediaType)
+        .set('Content-Type', formMediaType);
 	console.log('header params: ', headerMap);
 	return headerMap;
 }
