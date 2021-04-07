@@ -33,8 +33,7 @@ public class ZhenYouUtil {
 
 	// 修改密码
 	public static JSONObject editUserPass(JSONObject o, String token) {
-//		JSONObject result = RestUtil.putParams(server + "/nuas/api/v1/password", o, token);
-		JSONObject result = null;
+		JSONObject result = RestUtil.putParams(server + "/nuas/api/v1/password", o, token);
 
 		return result;
 	}

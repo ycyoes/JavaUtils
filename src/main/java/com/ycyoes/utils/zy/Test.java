@@ -10,8 +10,8 @@ public class Test {
     public static void main(String[] args) {
         String sha = RestUtil.sha("test");
         System.out.println(sha);
-//        JSONObject loginResult = ZhenYouUtil.login();
-//        System.out.println(loginResult);
+        JSONObject loginResult = ZhenYouUtil.login();
+        System.out.println(loginResult);
 
         // 获取随机数
         String nonce = String.valueOf(new Random().nextInt());
@@ -19,7 +19,7 @@ public class Test {
         String Timestamp = String.valueOf(new Date().getTime());
         System.out.println("nonce: " + nonce + " timestamp: " + Timestamp);
 
-        HttpHeaders headers  =RestUtil.getHeaderZy("test", "test");
+        HttpHeaders headers  =RestUtil.getHeaderZy("test/test", "test");
         System.out.println(headers);
     }
 }

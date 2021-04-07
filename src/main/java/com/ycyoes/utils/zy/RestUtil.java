@@ -407,8 +407,10 @@ public class RestUtil {
         arr.add(ApiKey);
         arr.add(Timestamp);
         arr.add(nonce);
+        System.out.println("arr before: " + arr);
         // 按值字典排序
         String codeSort = sort(arr);
+        System.out.println("arr after: " + codeSort);
         // SHA-1加密生成Signature
         String Signature = sha(codeSort);
         // 加入请求头
