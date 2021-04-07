@@ -30,6 +30,12 @@ let map = formHeaderParams();
 console.log(typeof map);
 console.log(strMapToJson(map));
 
+/**
+ * 组装请求头参数
+ *
+ * @param mediaType MediaType
+ * @returns {Map<any, any>}
+ */
 function formHeaderParams(mediaType) {
 	const formMediaType = mediaType !== undefined ? (mediaType.replace(/\s*/g,"") !== '' ? mediaType : "application/json;charset=UTF-8") : "application/json;charset=UTF-8";
 	const apiKey = "gns11529c136998cb6";
@@ -108,10 +114,3 @@ function random(length, options) {
   }
   return result;
 }
-
-
-
-
-
-
-
