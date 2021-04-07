@@ -26,9 +26,8 @@ public class ZhenYouUtil {
 		login.put("userName", zhenYouUserName);
 		login.put("password", zhenYouPassword);
 		login.put("imei", imei);
-//		JSONObject result = RestUtil.postZy(server + "/nuas/api/v1/sessions", login, null);
-		JSONObject result = null;
-		//System.out.println(result.toString());
+		JSONObject result = RestUtil.postZy(server + "/nuas/api/v1/sessions", login, null);
+		System.out.println(result.toString());
 		return result;
 	}
 
