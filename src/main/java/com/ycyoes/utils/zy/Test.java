@@ -62,7 +62,11 @@ public class Test {
 
         //创建直播
         JSONObject o = ZhenYouUtil.createZhiBo(token, id, name);
+//        JSONObject o = ZhenYouUtil.createZhiBo(XiXianUtil.loginUser().getString("token"),XiXianUtil.loginUser().getString("id"),XiXianUtil.loginUser().getString("name"));
         System.out.println("-------------创建直播： " + o);
+
+        JSONObject Video=ZhenYouUtil.createVideoConferenLive(XiXianUtil.loginUser().getString("token"), number, Mrl);
+
 
 
         // 获取随机数
