@@ -2,6 +2,7 @@ package com.ycyoes.utils.zy;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.map.MapUtil;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.ycyoes.common.collect.MapUtils;
@@ -17,8 +18,11 @@ public class Test {
         String sha = RestUtil.sha("test");
         System.out.println(sha);
 
-        String token = XiXianUtil.loginUser().getString("token");   //登录获取token
-        System.out.println("-----------token: " + token);
+        JSONObject loginInfo = XiXianUtil.loginUser();   //登录获取token
+        String token = loginInfo.getString("token");
+        String id = loginInfo.getString("id");
+        String name = loginInfo.getString("name");
+        System.out.println("-----------token: " + token + " \r\n id: " + id + " name: " + name);
 
         //获取联系人组信息
         JSONObject list = ZhenYouUtil.getUserList(token);
@@ -55,6 +59,10 @@ public class Test {
         //获取视频会议号
         String conferenceNum = getConferenceNumber(shipinhuiyi);
         System.out.println("-------------获取视频会议号: " + conferenceNum);
+
+        //创建直播
+        JSONObject o = ZhenYouUtil.createZhiBo(token, id, name);
+        System.out.println("-------------创建直播： " + o);
 
 
         // 获取随机数
