@@ -32,10 +32,14 @@ console.log(new Date().getTime());
 
 
 
-login()
+// let loginResult = login();
+// console.log('----------------loginResult: ', loginResult)
+login().then(function (resolve) {
+    console.log('resolve: ', resolve.data)
+})
 
 //登录
-function login() {
+async function login() {
     //封装请求头测试
     let map = formHeaderParams();
     // console.log(typeof map);
@@ -57,17 +61,18 @@ function login() {
         headers: JSON.parse(strMapToJson(map))
     });
 
-    instance.post(requestUrl, strMapToObj(loginParam)).then(function(response) {
-        console.log('----------response data: ', response.data);
+    /*instance.post(requestUrl, strMapToObj(loginParam)).then(function(response) {
+        // console.log('----------response data: ', response.data);
         // console.log(response.status);
         // console.log(response.statusText);
         // console.log(response.headers);
-        console.log('-----config: ', response.config);
+        // console.log('-----config: ', response.config);
+        loginResult = response.data;
     }).catch(function (err)  {
         console.log("reject: ", err)
-    })
+    })*/
 
-
+    return instance.post(requestUrl, strMapToObj(loginParam));
 }
 
 /**
