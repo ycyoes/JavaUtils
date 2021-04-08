@@ -15,7 +15,8 @@ public class ZhenYouUtil {
 	private static String prot=":8089";
 	private static String server = ip+prot;
 	// ceshi01 账号 ceshi001 密码 Nucleus!
-	private static String zhenYouUserName = "504shq";
+//	private static String zhenYouUserName = "504shq";
+	private static String zhenYouUserName = "504ssyt";
 	private static String zhenYouPassword = "Nucleus!";
 	private static String imei = zhenYouUserName;
 	private static String videoConfig = "{\"VideoConferenceID\":\"681fffed-91d4-4917-843a-4b6b872f0b49\",\"VideoConferenceName\":\"3组\",\"IsMuteJoinConference\":false,\"IsAutoReInvite\":false,\"Password\":\"\",\"IsAutoSelectedNumber\":true,\"Number\":null,\"IsAutoScreen\":true,\"VideoConferenceScreenType\":4,\"MainVideoConfigs\":[{\"EVideoFormat\":2,\"EVideoProtocol\":3,\"EFrameRate\":25,\"EBitRate\":1024},{\"EVideoFormat\":1,\"EVideoProtocol\":3,\"EFrameRate\":25,\"EBitRate\":1024},{\"EVideoFormat\":0,\"EVideoProtocol\":1,\"EFrameRate\":30,\"EBitRate\":384},{\"EVideoFormat\":0,\"EVideoProtocol\":1,\"EFrameRate\":30,\"EBitRate\":384}],\"SubVideoConfigs\":[],\"RecallConfig\":null,\"NumberList\":null}";

@@ -43,9 +43,11 @@ public class Test {
         }
         userTeam.put("name", dec+ DateUtil.current());
         userTeam.put("contactIds", new String[]{userId});
-
+        System.out.println("-------------userTeam: " + userTeam);
         JSONObject group = ZhenYouUtil.createUserTeam(userTeam, token);
         System.out.println("-------------创建联系人组:" + group.toString());
+//        ZhenYouUtil.addUserTeam()
+
 
         //获取组id
         String groupId = createGroup(group);
@@ -65,8 +67,13 @@ public class Test {
 //        JSONObject o = ZhenYouUtil.createZhiBo(XiXianUtil.loginUser().getString("token"),XiXianUtil.loginUser().getString("id"),XiXianUtil.loginUser().getString("name"));
         System.out.println("-------------创建直播： " + o);
 
-        JSONObject Video=ZhenYouUtil.createVideoConferenLive(XiXianUtil.loginUser().getString("token"), number, Mrl);
+        //获取mrl
+        JSONObject data = o.getJSONObject("data");
+        String mrl = data.getString("baseMrl") + data.getString("stream") + "?token=" + data.getString("token");
+        System.out.println("-------------mrl: " + mrl);
 
+        JSONObject video = ZhenYouUtil.createVideoConferenLive(XiXianUtil.loginUser().getString("token"), conferenceNum, mrl);
+        System.out.println("-------------video: " + video);
 
 
         // 获取随机数
