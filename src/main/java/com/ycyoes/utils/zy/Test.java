@@ -48,7 +48,14 @@ public class Test {
         System.out.println("-------------联系人组id: " + groupId);
 
         //创建视频会议
-        JSONObject shipin = emergencyService.createShiPinHuiYi(groupId, null);
+        String[] contact2NumberInfos = new String[0];
+        JSONObject shipinhuiyi = ZhenYouUtil.createVideoConferen(token, groupId, contact2NumberInfos);
+        System.out.println("-------------创建视频会议: " + shipinhuiyi);
+
+        //获取视频会议号
+        String conferenceNum = getConferenceNumber(shipinhuiyi);
+        System.out.println("-------------获取视频会议号: " + conferenceNum);
+
 
         // 获取随机数
         /*String nonce = String.valueOf(new Random().nextInt());
@@ -58,6 +65,25 @@ public class Test {
 
         HttpHeaders headers  =RestUtil.getHeaderZy("test/test", "test");
         System.out.println(headers);*/
+    }
+
+    public static String getConferenceNumber(JSONObject shipin) {
+        String huiyinumber = "";
+        if (shipin != null) {
+            JSONObject status = shipin.getJSONObject("status");
+            if (status != null) {
+                Integer code = status.getInteger("code");
+                if (code == 0) {
+                    JSONObject data = shipin.getJSONObject("data");
+                    if (data != null) {
+                        huiyinumber = data.getString("conferenceNumber");
+                    }
+
+                }
+            }
+
+        }
+        return huiyinumber;
     }
 
     public static String createGroup(JSONObject createGroup) {
