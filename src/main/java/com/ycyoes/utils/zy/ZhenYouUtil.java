@@ -1,5 +1,6 @@
 package com.ycyoes.utils.zy;
 
+import cn.hutool.core.date.DateUtil;
 import com.ycyoes.utils.zy.RestUtil;
 import org.springframework.http.HttpMethod;
 
@@ -297,15 +298,16 @@ public class ZhenYouUtil {
 	// 创建直播
 	public static JSONObject createZhiBo(String token, String contactId, String userName) {
 		JSONObject o = new JSONObject();
+		String timeStamp = DateUtil.format(new Date(), "yyyy-MM-dd HH:mm:ss");
 		o.put("appointment", 0);
-		o.put("contactDisplayName", userName + "的"+new Date().getTime()+"直播");
+		o.put("contactDisplayName", userName + "的"+ timeStamp +"直播");
 		o.put("contactId", contactId);
-		o.put("createTime", new Date().getTime());
-		o.put("desc", userName + "的"+new Date().getTime()+"直播");
+		o.put("createTime", new Date().getTime()/1000);
+		o.put("desc", userName + "的"+ timeStamp +"直播");
 		o.put("dvrCount", 0);
 		o.put("playCount", 0);
 		o.put("status", 0);
-		o.put("title", userName + "的"+new Date().getTime()+"直播");
+		o.put("title", userName + "的"+ timeStamp +"直播");
 		JSONObject result = RestUtil.postZy(server + "/nuas/api/v1/gmcc/live/0", o, token);
 		return result;
 	}
