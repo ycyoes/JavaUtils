@@ -51,7 +51,7 @@ public class Test {
         System.out.println("-------------获取添加后的联系人组信息: " + groupMemberInfos);
 
         //创建视频会议
-        /*String[] contact2NumberInfos = new String[0];
+        String[] contact2NumberInfos = new String[0];
         JSONObject shipinhuiyi = ZhenYouUtil.createVideoConferen(token, groupId, contact2NumberInfos);
         System.out.println("-------------创建视频会议: " + shipinhuiyi);
 
@@ -70,7 +70,7 @@ public class Test {
         System.out.println("-------------mrl: " + mrl);
 
         JSONObject video = ZhenYouUtil.createVideoConferenLive(XiXianUtil.loginUser().getString("token"), conferenceNum, mrl);
-        System.out.println("-------------video: " + video);*/
+        System.out.println("-------------video: " + video);
 
 
         // 获取随机数
