@@ -110,7 +110,7 @@ function formHeaderParams(mediaType) {
 	return headerMap;
 }
 
-//以下为封装的工具方法
+//--------------以下为封装的工具方法-----------------
 function strMapToObj(strMap) {
   let obj = Object.create(null);
   for (let [k,v] of strMap) {
