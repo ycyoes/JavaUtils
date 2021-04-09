@@ -119,6 +119,13 @@ public class ZhenYouUtil {
 		return result;
 	}
 
+    // 联系人组添加成员
+    public static JSONObject addUserTeam(String token, String id, String[] ids) {
+        JSONObject result = RestUtil.post2(server + "/nuas/api/v1/groups/" + id + "/contacts", HttpMethod.POST, token,
+                ids);
+        return result;
+    }
+
 	// 删除联系人组
 	public static JSONObject deleteGroupById(String token, String groupId) {
 		JSONObject result = RestUtil.deleteUrl(server + "/nuas/api/v1/groups/" + groupId, token);
