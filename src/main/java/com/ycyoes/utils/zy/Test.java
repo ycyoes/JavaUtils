@@ -1,17 +1,8 @@
 package com.ycyoes.utils.zy;
 
 import cn.hutool.core.date.DateUtil;
-import cn.hutool.core.map.MapUtil;
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.ycyoes.common.collect.MapUtils;
-import com.ycyoes.utils.StringUtils;
-import org.springframework.http.HttpHeaders;
-
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Random;
 
 public class Test {
     public static void main(String[] args) {
@@ -27,8 +18,9 @@ public class Test {
         //获取联系人组信息
         JSONObject list = ZhenYouUtil.getUserList(token);
         JSONArray s = list.getJSONArray("data");
-//        s.forEach(System.out::println);
+        s.forEach(System.out::println);
         String userId = s.getJSONObject(1).getString("id");
+
         System.out.println("----------get first id: " + userId);
 
         //获取
@@ -46,15 +38,20 @@ public class Test {
         System.out.println("-------------userTeam: " + userTeam);
         JSONObject group = ZhenYouUtil.createUserTeam(userTeam, token);
         System.out.println("-------------创建联系人组:" + group.toString());
-//        ZhenYouUtil.addUserTeam()
-
 
         //获取组id
         String groupId = createGroup(group);
         System.out.println("-------------联系人组id: " + groupId);
 
+        //联系人组添加联系人
+        JSONObject addUserInfo = ZhenYouUtil.addUserTeam(token, groupId, new String[]{"401000100029", "401000100030"});
+        System.out.println("-------------添加联系人组信息： " + addUserInfo);
+
+        JSONObject groupMemberInfos = ZhenYouUtil.getUserTeamMemberByTeamID(token, groupId);
+        System.out.println("-------------获取添加后的联系人组信息: " + groupMemberInfos);
+
         //创建视频会议
-        String[] contact2NumberInfos = new String[0];
+        /*String[] contact2NumberInfos = new String[0];
         JSONObject shipinhuiyi = ZhenYouUtil.createVideoConferen(token, groupId, contact2NumberInfos);
         System.out.println("-------------创建视频会议: " + shipinhuiyi);
 
@@ -73,7 +70,7 @@ public class Test {
         System.out.println("-------------mrl: " + mrl);
 
         JSONObject video = ZhenYouUtil.createVideoConferenLive(XiXianUtil.loginUser().getString("token"), conferenceNum, mrl);
-        System.out.println("-------------video: " + video);
+        System.out.println("-------------video: " + video);*/
 
 
         // 获取随机数
