@@ -1,6 +1,8 @@
 package com.ycyoes.test.reflection;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+
 import com.ycyoes.demos.basic.reflection.RichType;
 
 public class TypeTest {
@@ -10,6 +12,21 @@ public class TypeTest {
 		//null可直接转为类类型
 		RichType rType = (RichType)null;
 		System.out.println(rType);
+
+		Method method = null;
+		try {
+			method = Class.forName("com.ycyoes.demos.basic.reflection.RichType").getMethod("setRichType", new Class[]{RichType.class});
+			Class cls = method.getParameterTypes()[0];
+			System.out.println(cls);
+
+
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+
 	}
 	
 	/**
