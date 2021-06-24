@@ -1,6 +1,5 @@
 package com.ycyoes.test.entity;
 
-import java.util.Comparator;
 import java.util.Date;
 
 /**
