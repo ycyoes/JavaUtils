@@ -8,6 +8,17 @@ public class User {
     private Integer sex;
     private String schoolName;
 
+    public User() {
+    }
+
+    public User(String name, String email, Integer age, Integer sex, String schoolName) {
+        this.name = name;
+        this.email = email;
+        this.age = age;
+        this.sex = sex;
+        this.schoolName = schoolName;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -54,5 +65,17 @@ public class User {
 
     public void setSchoolName(String schoolName) {
         this.schoolName = schoolName;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", age=" + age +
+                ", sex=" + sex +
+                ", schoolName='" + schoolName + '\'' +
+                '}';
     }
 }
