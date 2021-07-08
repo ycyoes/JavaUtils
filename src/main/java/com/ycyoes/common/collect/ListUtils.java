@@ -1,5 +1,6 @@
 package com.ycyoes.common.collect;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -403,5 +404,30 @@ public class ListUtils extends org.apache.commons.collections.ListUtils {
             }
         }
         return list;
+    }
+
+    /**
+     * 使用序列化方法 实现深拷贝
+     *
+     * @param src 待拷贝数据
+     * @param <T> 数据类型
+     * @return  拷贝后的集合
+     */
+    public static <T> List<T> deepCopy(List<T> src) {
+        ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+        List<T> dest = null;
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(byteOut);
+            out.writeObject(src);
+
+            ByteArrayInputStream byteIn = new ByteArrayInputStream(byteOut.toByteArray());
+            ObjectInputStream in = new ObjectInputStream(byteIn);
+            dest = (List<T>) in.readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return dest;
     }
 }
