@@ -13,7 +13,7 @@ public class Client {
                 .create();
 
         //You can then send messages to the broker and topic you specified:
-        producer.send("My message".getBytes());
+        producer.send("------------------My message".getBytes());
 
         Consumer consumer = client.newConsumer()
                 .topic("my-topic")
