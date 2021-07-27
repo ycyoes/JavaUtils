@@ -95,6 +95,21 @@ public class LinkListOper {
         return list;
     }
 
+    //求中间结点
+    public static Node findMiddleNode(Node list) {
+        if (list == null) return null;
+
+        Node fast = list;
+        Node slow = list;
+
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+
+        return slow;
+    }
+
     public static void printAll(Node list) {
         Node p = list;
         while (p != null) {
