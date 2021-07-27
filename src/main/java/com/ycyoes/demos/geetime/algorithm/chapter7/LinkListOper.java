@@ -24,6 +24,22 @@ public class LinkListOper {
         return prev;
     }
 
+    //检测环
+    public static boolean checkCircle(Node list) {
+        if (list == null) return false;
+
+        Node fast = list.next;
+        Node slow = list;
+
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (slow == fast) return true;
+        }
+
+        return false;
+    }
+
 
 
     public static void printAll(Node list) {
