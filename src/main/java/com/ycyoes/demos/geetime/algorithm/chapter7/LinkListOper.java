@@ -40,7 +40,60 @@ public class LinkListOper {
         return false;
     }
 
+    //两个有序的链表合并
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode soldier = new ListNode(0);  //利用哨兵结点简化实现难度
+        ListNode p = soldier;
 
+        while (l1 != null && l2 != null) {
+            if (l1.val < l2.val) {
+                p.next = l1;
+                l1 = l1.next;
+            } else {
+                p.next = l2;
+                l2 = l2.next;
+            }
+            p = p.next;
+        }
+
+        if (l1 != null) {
+            p.next = l1;
+        }
+
+        if (l2 != null){
+            p.next = l2;
+        }
+
+        return soldier.next;
+    }
+
+    //删除倒数第K个结点
+    public static Node deleteLastKth(Node list, int k) {
+        Node fast = list;
+        int i = 1;
+        while (fast != null && i < k) {
+            fast = fast.next;
+            ++i;
+        }
+
+        if (fast == null) return list;
+
+        Node slow = list;
+        Node prev = null;
+
+        while (fast.next != null) {
+            fast = fast.next;
+            prev = slow;
+            slow = slow.next;
+        }
+
+        if (prev == null) {
+            list = list.next;
+        } else {
+            prev.next = prev.next.next;
+        }
+        return list;
+    }
 
     public static void printAll(Node list) {
         Node p = list;
@@ -53,6 +106,12 @@ public class LinkListOper {
 
     public static Node createNode(int value) {
         return new Node(value, null);
+    }
+
+    public class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) { val = x; }
     }
 
     public static class Node {
