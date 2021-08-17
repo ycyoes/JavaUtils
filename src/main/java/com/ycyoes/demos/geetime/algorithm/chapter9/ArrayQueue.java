@@ -23,7 +23,17 @@ public class ArrayQueue {
     //入队
     public boolean enqueue(String item) {
         //如果tail == n 标识队列已经满了
-        if(tail == n) return false;
+        if(tail == n) {
+            //tail == n & head == 0 标识整个队列满了
+            if (head == 0) return false;
+            //数据搬移
+            for (int i = head; i < tail; ++i) {
+                items[i - head] = items[i];
+            }
+            //搬移完之后重新更新head和tail
+            tail -= head;
+            head = 0;
+        }
         items[tail] = item;
         ++tail;
         return true;
