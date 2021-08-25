@@ -86,6 +86,21 @@ public class MergeSort {
         for (int i = 0; i < r - 1; i++) {
             rightArr[i] = arr[q + 1 + i];
         }
+
+        //第二个数组添加哨兵（最大值）
+        rightArr[r-q] = Integer.MAX_VALUE;
+
+        int i = 0;
+        int j = 0;
+        int k = p;
+        while (k <= r) {
+            //当左边数组到达哨兵值时，i不再增加，直到右边数组读取完剩余值，同理右边数组也一样
+            if (leftArr[i] <= rightArr[j]) {
+                arr[k++] = leftArr[i++];
+            } else {
+                arr[k++] = rightArr[j++];
+            }
+        }
     }
 
 }
