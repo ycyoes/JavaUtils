@@ -1,5 +1,11 @@
 package com.ycyoes.demos.geetime.algorithm.chapter11;
 
+/**
+ * 用数组实现的队列
+ *
+ * @author ycyoes
+ * @date 2021-08-24 18:54
+ */
 public class ArraySort {
 
     public void insertionSort(int[] a, int n) {
