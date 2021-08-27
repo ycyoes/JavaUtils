@@ -40,6 +40,7 @@ public class CountingSort {
         int[] r = new int[n];
 
         //计算排序的关键步骤
+        //注意：此处也可从头向后取值，此时就不是稳定排序算法了
         for (int i = n - 1; i >= 0; --i) {
             //找到元素在顺序求和数组中的位置，位置即为排名
             int index = c[a[i]] - 1;
