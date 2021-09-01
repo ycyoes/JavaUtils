@@ -1,5 +1,11 @@
 package com.ycyoes.demos.geetime.algorithm.chapter15;
 
+/**
+ * 二分查找
+ *
+ * @author ycyoes
+ * @date 2021-09-01
+ */
 public class BinarySearch {
 
     //递归实现二分查找
@@ -18,6 +24,8 @@ public class BinarySearch {
         } else if (a[mid] > value) {
             return bsearchInternally(a, low, mid - 1, value);
         }
+
+        return -1;
     }
 
     //二分查找
