@@ -10,6 +10,26 @@ public class BinarySearch {
         int[] a = {1, 2, 2};
         int r = bsearchLast(a, 3, 2);
         System.out.println(r);
+
+        int[] b = {2,3,4,5,6,7,10};
+        r = bsearchLargeEqual(b, 5, 5);
+        System.out.println(r);
+    }
+
+//    查找第一个大于等于给定值的元素
+    public static int bsearchLargeEqual(int[] a, int n, int value) {
+        int low = 0;
+        int high = n - 1;
+        while (low <= high) {
+            int mid = low + ((high - low) >> 1);
+            if (a[mid] < value) {
+                low = mid + 1;
+            } else {
+                if ((mid == 0) || (a[mid-1] < value)) return mid;
+                else high = mid - 1;
+            }
+        }
+        return -1;
     }
 
     //查找最后一个值等于给定值的元素
