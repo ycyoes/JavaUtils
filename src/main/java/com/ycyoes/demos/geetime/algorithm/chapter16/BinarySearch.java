@@ -12,11 +12,34 @@ public class BinarySearch {
         System.out.println(r);
 
         int[] b = {2,3,4,5,6,7,10};
-        r = bsearchLargeEqual(b, 5, 5);
+        r = bsearchLargeEqual(b, 7, 5);
+        System.out.println(r);
+
+        int[] c = {3,5,6,8,9,10};
+        r = bsearchLessEqual(c, 6, 7);
         System.out.println(r);
     }
 
-//    查找第一个大于等于给定值的元素
+//    查找最后一个小于等于给定值的元素
+    public static int bsearchLessEqual(int[] a, int n, int value) {
+        int low = 0;
+        int high = n - 1;
+        while (low <= high) {
+            int mid = low + ((high - low) >> 1);
+            if (a[mid] > value) {
+                high = mid - 1;
+            } else {
+//                if ((mid == 0) || (a[mid - 1] < a[mid])) return mid;
+//                else high = mid - 1;
+                if ((mid == n - 1) || (a[mid + 1] > value)) return mid;
+                else low = mid + 1;
+            }
+        }
+
+        return -1;
+    }
+
+    //    查找第一个大于等于给定值的元素
     public static int bsearchLargeEqual(int[] a, int n, int value) {
         int low = 0;
         int high = n - 1;
