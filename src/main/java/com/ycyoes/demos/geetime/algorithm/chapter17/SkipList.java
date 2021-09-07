@@ -17,6 +17,7 @@ public class SkipList {
 
     private Node head = new Node(); //带头链表
 
+    //查找
     public Node find(int value) {
         Node p = head;
         for (int i = levelCount - 1; i >= 0; --i) {
@@ -30,6 +31,37 @@ public class SkipList {
         } else {
             return null;
         }
+    }
+
+    //插入元素
+    public void insert(int value) {
+        int level = randomLevel();
+        Node newNode = new Node();
+        newNode.data = value;
+        newNode.maxLevel = level;
+        Node update[] = new Node[level];
+        for (int i = 0; i < level; i++) {
+          update[i] = head;
+        }
+
+        //record every level largest value which smaller than insert value in update[]
+        Node p = head;
+        for (int i = level - 1; i >= 0; --i) {
+          while (p.forwards[i] != null && p.forwards[i].data < value) {
+              p = p.forwards[i];
+          }
+          update[i] = p;    //use update save node in search path
+        }
+
+        //in search path node next node become new node forwards(next)
+        for (int i = 0; i < level; i++) {
+            newNode.forwards[i] = update[i].forwards[i];
+            update[i].forwards[i] = newNode;
+        }
+
+        //update node hight
+        if (levelCount < level) levelCount = level;
+
     }
 
 
