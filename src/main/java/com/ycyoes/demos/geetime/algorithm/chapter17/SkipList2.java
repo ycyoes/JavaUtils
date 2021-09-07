@@ -96,6 +96,28 @@ public class SkipList2 {
         }
     }
 
+    public void delete(int value) {
+        Node[] update = new Node[levelCount];
+        Node p = head;
+        //逐层查找前一节点
+        for (int i = levelCount - 1; i >= 0; --i) {
+
+            while (p.forwards[i] != null && p.forwards[i].data < value) {
+                p = p.forwards[i];
+            }
+
+            update[i] = p;
+        }
+
+        if (p.forwards[0] != null && p.forwards[0].data == value) {
+            for (int i = levelCount - 1; i >= 0; --i) {
+                if (update[i].forwards[i] != null && update[i].forwards[i].data == value) {
+                    update[i].forwards[i] = update[i].forwards[i].forwards[i];
+                }
+            }
+        }
+    }
+
     /**
      * 随机level次，如果是奇数层数+1，防止伪随机
      * @return
