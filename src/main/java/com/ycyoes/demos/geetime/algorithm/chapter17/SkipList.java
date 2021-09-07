@@ -64,6 +64,29 @@ public class SkipList {
 
     }
 
+    public void delete(int value) {
+        Node[] update = new Node[levelCount];
+        Node p = head;
+        for (int i = levelCount - 1; i >= 0; i++) {
+          while (p.forwards[i] != null && p.forwards[i].data < value) {
+              p = p.forwards[i];
+          }
+          update[i] = p;
+        }
+
+        if (p.forwards[0] != null && p.forwards[0].data == value) {
+            for (int i = levelCount - 1; i >= 0; --i) {
+              if (update[i].forwards[i] != null && update[i].forwards[i].data == value) {
+                  update[i].forwards[i] = update[i].forwards[i].forwards[i];
+              }
+            }
+        }
+
+        while (levelCount > 1 && head.forwards[levelCount] == null) {
+            levelCount--;
+        }
+    }
+
 
     // 理论来讲，一级索引中元素个数应该占原始数据的 50%，二级索引中元素个数占 25%，三级索引12.5% ，一直到最顶层。
     // 因为这里每一层的晋升概率是 50%。对于每一个新插入的节点，都需要调用 randomLevel 生成一个合理的层数。
