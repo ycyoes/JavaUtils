@@ -42,6 +42,88 @@ public class LRUBaseHashTable<K,V> {
      */
     public void add(K key, V value) {
         DNode<K, V> node = table.get(key);
+        if (null == node) {
+            DNode<K, V> newNode = new DNode<>(key, value);
+            table.put(key, newNode);
+            addNode(newNode);
+
+            if (++length > capacity) {
+                DNode<K, V> tail = popTail();
+            }
+
+        }
+    }
+
+    /**
+     * 获取节点数据
+     *
+     * @param key
+     * @return
+     */
+    public V get(K key) {
+        DNode<K, V> node = table.get(key);
+        if (null == node) {
+            return null;
+        }
+        moveToHead(node);
+        return node.value;
+    }
+
+    /**
+     * 移除节点数据
+     *
+     * @param key
+     */
+    public void remove(K key) {
+        DNode<K,V> node = table.get(key);
+        if (null == node) {
+            return;
+        }
+
+        removeNode(node);
+        length--;
+        table.remove(node.key);
+    }
+
+    /**
+     * 将节点移动到头部
+     * @param node
+     */
+    private void moveToHead(DNode<K, V> node) {
+        removeNode(node);
+        addNode(node);
+    }
+
+    /**
+     * 弹出尾部数据节点
+     * @return
+     */
+    private DNode<K, V> popTail() {
+        DNode<K, V> node = tailNode.prev;
+        removeNode(node);
+        return node;
+    }
+
+    /**
+     * 移除节点
+     *
+     * @param node
+     */
+    private void removeNode(DNode<K,V> node) {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+    }
+
+    /**
+     * 将新节点加到头部
+     * @param newNode
+     */
+    private void addNode(DNode<K, V> newNode) {
+        newNode.next = headNode.next;
+        newNode.prev = headNode;
+
+        headNode.next.prev = newNode;
+        headNode.next = newNode;
     }
 
     //双向链表
