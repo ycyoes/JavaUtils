@@ -46,6 +46,15 @@ public class BinarySearchTree {
         }
     }
 
+    public Node findMax() {
+        if (tree == null) return null;
+        Node p = tree;
+        while (p.right != null) {
+            p = p.right;
+        }
+        return p;
+    }
+
     public void delete(int data) {
         Node p = tree;  //p指向要删除的节点，初始化指向根节点
         Node pp = null; //pp记录的是p的父节点
