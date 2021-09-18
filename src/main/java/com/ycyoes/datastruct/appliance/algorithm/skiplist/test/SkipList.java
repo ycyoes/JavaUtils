@@ -31,6 +31,22 @@ public class SkipList<T> {
         Comparator<T> cmp = this.comparator;
         //第一大步：先找到前置的索引节点
         Node<T> preIndexNode = findPreIndexNode(value, true);
+        //如果要查找的值正好是索引节点
+        if (preIndexNode.value != null && cmp.compare(preIndexNode.value, value) == 0) {
+            return value;
+        }
+
+        //第二大步：再按链表的方式查找
+        Node<T> q;
+        Node<T> n;
+        int c;
+        for (q = preIndexNode;;) {
+            n = q.next;
+            c = cmp.compare(n.value, value);
+            if (c == 0) return value;   //找到了
+            if (c > 0) return null; //没找到
+            q = n;  //下一个
+        }
     }
 
     /**
