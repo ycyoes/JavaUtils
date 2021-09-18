@@ -11,7 +11,27 @@ package com.ycyoes.datastruct.appliance.algorithm.skiplist.test;
 public class SkipList {
 
     private static class HeadIndex<T> extends Index<T> {
+        int level;  //层级
+        public HeadIndex(Node<T> node, Index<T> down, Index<T> right, int level) {
+            super(node, down, right);
+            this.level = level;
+        }
+    }
 
+    /**
+     * 索引节点：引用着真实节点
+     * @param <T>
+     */
+    private static class Index<T> {
+        Node<T> node;   //真实节点
+        Index<T> down;  //下指针（第一层的索引实际上是没有下指针的）
+        Index<T> right; //右指针
+
+        public Index(Node<T> node, Index<T> down, Index<T> right) {
+            this.node = node;
+            this.down = down;
+            this.right = right;
+        }
     }
 
 
