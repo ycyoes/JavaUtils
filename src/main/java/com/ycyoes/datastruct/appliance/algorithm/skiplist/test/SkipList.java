@@ -1,5 +1,7 @@
 package com.ycyoes.datastruct.appliance.algorithm.skiplist.test;
 
+import java.util.Comparator;
+
 /**
  *
  * 跳表
@@ -8,8 +10,79 @@ package com.ycyoes.datastruct.appliance.algorithm.skiplist.test;
  * @create 2021-09-18 19:56
  *
  */
-public class SkipList {
+public class SkipList<T> {
+    Comparator comparator;
+    Index<T> head;
+    public static void main(String[] args) {
+    }
 
+    /**
+     * 查找元素
+     * 先找到前置索引节点，再往后查找
+     *
+     * @param value
+     * @return
+     */
+    public T get(T value) {
+        if (value == null) {
+            throw new NullPointerException();
+        }
+
+        Comparator<T> cmp = this.comparator;
+        //第一大步：先找到前置的索引节点
+        Node<T> preIndexNode = findPreIndexNode(value, true);
+    }
+
+    /**
+     *
+     * @param value 要查找的值
+     * @param contain   是否包含value的索引
+     * @return
+     */
+    private Node<T> findPreIndexNode(T value, boolean contain) {
+        /*
+         * q---->r---->r
+         * |     |
+         * |     |
+         * v     v
+         * d     d
+         * q = query
+         * r = right
+         * d = down
+         */
+        // 从头节点开始查找，规律是先往右再往下，再往右再往下
+        Index<T> q = this.head;
+        Index<T> r, d;
+        Comparator<T> cmp = this.comparator;
+        for (;;) {
+            r = q.right;
+            if (r != null) {
+                //包含value的索引，正好有
+                if (contain && cmp.compare(r.node.value, value) == 0) {
+                    return r.node;
+                }
+
+                //如果右边的节点比value小，则右移
+                if (cmp.compare(r.node.value, value) < 0) {
+                    q = r;
+                    continue;
+                }
+            }
+            d = q.down;
+            //如果下面的索引为空了，则返回该节点
+            if (d == null) {
+                return q.node;
+            }
+            //否则，下移
+            q = d;
+        }
+
+    }
+
+    /**
+     * 头节点：标记层
+     * @param <T>
+     */
     private static class HeadIndex<T> extends Index<T> {
         int level;  //层级
         public HeadIndex(Node<T> node, Index<T> down, Index<T> right, int level) {
@@ -34,9 +107,8 @@ public class SkipList {
         }
     }
 
-
     /**
-     * 索引节点：引用这真实节点
+     * 链表中的节点:真正存数据的节点
      * @param <T>
      */
     static class Node<T> {
