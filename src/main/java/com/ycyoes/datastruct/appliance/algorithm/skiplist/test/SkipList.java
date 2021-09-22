@@ -50,6 +50,16 @@ public class SkipList<T> {
     }
 
     /**
+     * 添加元素
+     * 不能添加相同的元素
+     *
+     * @param value
+     */
+    public void add(T value) {
+
+    }
+
+    /**
      *
      * @param value 要查找的值
      * @param contain   是否包含value的索引
