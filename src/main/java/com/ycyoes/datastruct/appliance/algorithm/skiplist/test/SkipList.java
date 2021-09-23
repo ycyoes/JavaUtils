@@ -160,7 +160,59 @@ public class SkipList<T> {
         }
 
         Index<T> q = this.head;
+        Index<T> r, d;
+        Comparator<T> cmp = this.comparator;
+        Node<T> preIndexNode;
 
+        //第一步：寻找元素
+        for(;;) {
+            r = q.right;
+            if (r != null) {
+                //包含value的索引，正好有
+                if (cmp.compare(r.node.value, value) == 0) {
+                    //纠正：顺便修正向右的索引
+                    q.right = r.right;
+                }
+                //如果右边的节点比value小，则右移
+                if (cmp.compare(r.node.value, value) < 0) {
+                    q = r;
+                    continue;
+                }
+            }
+
+            d = q.down;
+            //如果下面的索引为空了，则返回该节点
+            if (d == null) {
+                preIndexNode = q.node;
+                break;
+            }
+
+            //否则，下移
+            q = d;
+        }
+
+        //第二步：从链表中删除
+        Node<T> p = preIndexNode;
+        Node<T> n;
+        int c;
+        for(;;) {
+            n = p.next;
+            if (n == null) {
+                return;
+            }
+            c = cmp.compare(n.value, value);
+            if (c == 0) {
+                //找到了
+                p.next = n.next;
+                return;
+            }
+            if (c > 0) {
+                //没找到
+                return;
+            }
+            //后移
+            p = n;
+        }
     }
 
     /**
