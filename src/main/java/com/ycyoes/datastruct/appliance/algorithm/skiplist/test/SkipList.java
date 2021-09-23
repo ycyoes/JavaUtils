@@ -108,8 +108,59 @@ public class SkipList<T> {
                 for (int i = 1; i <= level; i++) {
                     idx = new Index<>(t, idx, null);
                 }
+            } else {
+                //大于了最大层数，则最多比最大层数多1
+                level = maxLevel + 1;
+                //第三步2： 先连好竖线
+                for (int i = 1; i <= level; i++) {
+                    idx = new Index<>(t, idx, null);
+                }
+                //新建head索引，并连好新head到最高node的线
+                HeadIndex<T> newHead = new HeadIndex<>(oldHead.node, oldHead, idx, level);
+                this.head = newHead;
+                idx = idx.down;
+            }
+
+            //第四步： 再连横线，从旧head开始再走一遍遍历
+            Index<T> qx, r, d;
+            int currentLevel;
+            for(qx = oldHead, currentLevel = oldHead.level; qx != null;) {
+                r = qx.right;
+                if (r != null) {
+                    //如果右边的节点比value小，则右移
+                    if (cmp.compare(r.node.value, value) < 0) {
+                        qx = r;
+                        continue;
+                    }
+                }
+
+                //如果目标层级比当前层级小，直接下移
+                if (level < currentLevel) {
+                    qx = qx.down;
+                } else {
+                    //右边到尽头了，连上
+                    idx.right = r;
+                    qx.right = idx;
+                    qx = qx.down;
+                    idx = idx.down;
+                }
+                currentLevel--;
             }
         }
+    }
+
+    /**
+     * 删除元素
+     *
+     * @param value
+     */
+    public void delete(T value) {
+        if (value == null) {
+            throw new NullPointerException();
+        }
+
+        Index<T> q = this.head;
+
     }
 
     /**
