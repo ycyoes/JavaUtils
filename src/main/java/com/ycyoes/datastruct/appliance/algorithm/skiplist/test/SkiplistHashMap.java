@@ -1,5 +1,7 @@
 package com.ycyoes.datastruct.appliance.algorithm.skiplist.test;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  *
  * 跳表
@@ -11,12 +13,38 @@ package com.ycyoes.datastruct.appliance.algorithm.skiplist.test;
 public class SkiplistHashMap {
 
 
-    static class SkiplistNode<K extends Comparable<K>, V> {
+    static class SkiplistNode<K extends Comparable<K>, V>  {
         int hash;
         K key;
         V value;
         int maxLevel;
         Node<K, V>[] nexts;
+
+        //往跳表中添加一个元素（只有头节点可调用此方法）
+        private V putValue(int hash, K key, V value) {
+            //1. 算出层数
+            int level = randomLevel();
+            //2. 如果层数高出头节点层数，则增加头节点层数
+            if (level > maxLevel) {
+                level = ++maxLevel;
+                SkiplistNode<K, V>[] oldNexts = this.nexts;
+                SkiplistNode<K, V>[] newNexts = new SkiplistNode[level];
+                for (int i = 0; i < oldNexts.length; i++) {
+                    newNexts[i] = oldNexts[i];
+                }
+//                this.nexts = newNexts;
+            }
+            return null;
+        }
+
+        private int randomLevel() {
+            int level = 1;
+            int random = ThreadLocalRandom.current().nextInt();
+            while (((random >>>= 1) & 1) != 0) {
+                level++;
+            }
+            return level;
+        }
 
         public V findValue(K key) {
             int level = this.maxLevel;
