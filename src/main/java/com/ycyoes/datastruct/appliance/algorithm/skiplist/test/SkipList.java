@@ -1,6 +1,7 @@
 package com.ycyoes.datastruct.appliance.algorithm.skiplist.test;
 
 import java.util.Comparator;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  *
@@ -12,7 +13,7 @@ import java.util.Comparator;
  */
 public class SkipList<T> {
     Comparator comparator;
-    Index<T> head;
+    HeadIndex<T> head;
     public static void main(String[] args) {
     }
 
@@ -56,7 +57,59 @@ public class SkipList<T> {
      * @param value
      */
     public void add(T value) {
+        if (value == null) {
+            throw new NullPointerException();
+        }
 
+        Comparator<T> cmp = this.comparator;
+        //第一步：先找到前置的索引节点
+        Node<T> preIndexNode = findPreIndexNode(value, true);
+        if (preIndexNode.value != null && cmp.compare(preIndexNode.value, value) == 0) {
+            return;
+        }
+
+        //第二步：加入到链表中
+        Node<T> q, n, t;
+        int c;
+        for (q = preIndexNode;;) {
+            n = q.next;
+            if (n == null) {
+                c = 1;
+            } else {
+                c = cmp.compare(n.value, value);
+                if (c == 0) {
+                    return;
+                }
+            }
+            if (c > 0) {
+                //插入链表节点
+                q.next = t = new Node<>(value, n);
+                break;
+            }
+            q = n;
+        }
+
+        //决定索引层数，每次最多只能比最大层数高1
+        int random = ThreadLocalRandom.current().nextInt();
+        //倒数第一位是0的才建索引
+        if ((random & 1) == 0) {
+            int level = 1;
+            //从倒数第二位开始连续加1
+            while (((random>>>=1) & 1) != 0) {
+                level++;
+            }
+
+            HeadIndex<T> oldHead = this.head;
+            int maxLevel = oldHead.level;
+            Index<T> idx = null;
+            //如果小于或等于最大层数，则不用再额外建head索引
+            if (level <= maxLevel) {
+                //第三步1：先连好竖线
+                for (int i = 1; i <= level; i++) {
+                    idx = new Index<>(t, idx, null);
+                }
+            }
+        }
     }
 
     /**
