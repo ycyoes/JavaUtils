@@ -28,8 +28,8 @@ public class SendSms {
 
     public static void main(String[] args) throws Exception {
         //必填,请参考"开发准备"获取如下数据,替换为实际值
-        String url = "https://rtcsms.ap-southeast-1.myhuaweicloud.com:443/sms/batchSendSms/v1"; //APP接入地址+接口访问URI
-        String appKey = "c8RWg3ggEcyd4D3p94bf3Y7x1Ile"; //Application Key
+        String url = "https://rtcsms.cn-north-1.myhuaweicloud.com:10743/sms/batchSendSms/v1"; //APP接入地址+接口访问URI
+        String appKey = "S8364pDfRTh8ysOxDFYB1b8KXey9"; //Application Key
         String appSecret = "q4Ii87BhST9vcs8wvrzN80SfD7Al"; //Application Secret
         String sender = "csms12345678"; //中国大陆短信签名通道号或全球短信通道号
         String templateId = "8ff55eac1d0b478ab3c06c3c6a492300"; //模板ID
