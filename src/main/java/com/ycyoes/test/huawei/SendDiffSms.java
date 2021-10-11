@@ -2,6 +2,15 @@ package com.ycyoes.test.huawei;
 
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.http.HttpHeaders;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.RequestBuilder;
+import org.apache.http.conn.ssl.NoopHostnameVerifier;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.ssl.SSLContextBuilder;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -16,7 +25,7 @@ public class SendDiffSms {
     private static final String AUTH_HEADER_VALUE = "WSSE realm=\"SDP\",profile=\"UsernameToken\",type=\"Appkey\"";
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         //必填,请参考"开发准备"获取如下数据,替换为实际值
         String url = "https://rtcsms.ap-southeast-1.myhuaweicloud.com:443/sms/batchSendDiffSms/v1"; //APP接入地址+接口访问URI
@@ -57,6 +66,49 @@ public class SendDiffSms {
         if (null != item2 && !item2.isEmpty()) {
             smsContent.add(item2);
         }
+
+        //请求Body
+        String body = buildRequestBody(sender, smsContent, statusCallBack);
+        if (null == body || body.isEmpty()) {
+            System.out.println("body is null.");
+            return;
+        }
+
+        //请求Headers中的X-WSSE参数值
+        String wsseHeader = buildWsseHeader(appKey, appSecret);
+        if (null == wsseHeader || wsseHeader.isEmpty()) {
+            System.out.println("wsse header is null.");
+            return;
+        }
+
+        //如果JDK版本低于1.8,可使用如下代码
+        //为防止因HTTPS证书认证失败造成API调用失败,需要先忽略证书信任问题
+        //CloseableHttpClient client = HttpClients.custom()
+        //        .setSSLContext(new SSLContextBuilder().loadTrustMaterial(null, new TrustStrategy() {
+        //            @Override
+        //            public boolean isTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
+        //                return true;
+        //            }
+        //        }).build()).setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE).build();
+
+        //如果JDK版本是1.8,可使用如下代码
+        //为防止因HTTPS证书认证失败造成API调用失败,需要先忽略证书信任问题
+        CloseableHttpClient client = HttpClients.custom()
+                .setSSLContext(new SSLContextBuilder().loadTrustMaterial(null,
+                        (x509CertChain, authType) -> true).build())
+                .setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE)
+                .build();
+
+        HttpResponse response = client.execute(RequestBuilder.create("POST")//请求方法POST
+                .setUri(url)
+                .addHeader(HttpHeaders.CONTENT_TYPE, "application/json")
+                .addHeader(HttpHeaders.AUTHORIZATION, AUTH_HEADER_VALUE)
+                .addHeader("X-WSSE", wsseHeader)
+                .setEntity(new StringEntity(body)).build());
+
+        System.out.println(response.toString()); //打印响应头域信息
+        System.out.println(EntityUtils.toString(response.getEntity())); //打印响应消息实体
+
     }
 
     /**
