@@ -1,4 +1,4 @@
-package com.ycyoes.test;
+package com.ycyoes.test.generic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
