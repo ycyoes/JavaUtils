@@ -15,6 +15,9 @@ public class Test {
         String name = loginInfo.getString("name");
         System.out.println("-----------token: " + token + " \r\n id: " + id + " name: " + name);
 
+        JSONObject orgList = ZhenYouUtil.getOrList(token);
+        System.out.println("组织架构信息： " + orgList.toString());
+
         //获取联系人组信息
         JSONObject list = ZhenYouUtil.getUserList(token);
         JSONArray s = list.getJSONArray("data");
@@ -49,6 +52,9 @@ public class Test {
 
         JSONObject groupMemberInfos = ZhenYouUtil.getUserTeamMemberByTeamID(token, groupId);
         System.out.println("-------------获取添加后的联系人组信息: " + groupMemberInfos);
+
+
+
 
         //创建视频会议
         String[] contact2NumberInfos = new String[0];
