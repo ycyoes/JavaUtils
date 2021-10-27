@@ -37,7 +37,7 @@ public class Counter {
 				e.printStackTrace();
 			}
 		}
-		
+
 		System.out.println(cas.i);
 		System.out.println(cas.atomicI.get());
 		System.out.println(System.currentTimeMillis() - start);
