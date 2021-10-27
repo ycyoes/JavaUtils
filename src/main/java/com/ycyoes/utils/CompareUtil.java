@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 
 /**
- *  ¶ÔÏóÊôĞÔ¶Ô±È¹¤¾ßÀà
+ *  å¯¹è±¡å±æ€§å¯¹æ¯”å·¥å…·ç±»
  * @param <T>
  */
 public class CompareUtil<T> {
@@ -40,7 +40,7 @@ public class CompareUtil<T> {
                     PropertyDescriptor pd = new PropertyDescriptor(field.getName(), clazz);
                     getMethod = pd.getReadMethod();
                 } catch (Exception e) {
-                    //Ìø¹ıÎŞº¯Êı·ÃÎÊµÄÊôĞÔ
+                    //è·³è¿‡æ— å‡½æ•°è®¿é—®çš„å±æ€§
                 }
                 if (getMethod == null) {
                     continue;
@@ -52,7 +52,7 @@ public class CompareUtil<T> {
 
                 if (!s1.equals(s2)) {
                     isEqual = false;
-                    System.out.println("²»Ò»ÑùµÄÊôĞÔ£º" + field.getName() + " originÊôĞÔÖµ£º[" + s1 + "]"+ "   currentÊôĞÔÖµ£º[" + s2 + "]");
+                    System.out.println("ä¸ä¸€æ ·çš„å±æ€§ï¼š" + field.getName() + " originå±æ€§å€¼ï¼š[" + s1 + "]"+ "   currentå±æ€§å€¼ï¼š[" + s2 + "]");
                 }
             }
         } catch (Exception e) {
@@ -89,15 +89,15 @@ public class CompareUtil<T> {
 
     public enum Status {
         /**
-         * ±ê¼ÇĞÂÊı¾İ
+         * æ ‡è®°æ–°æ•°æ®
          */
         NEW,
         /**
-         * ±ê¼Ç±ä¸üÊı¾İ
+         * æ ‡è®°å˜æ›´æ•°æ®
          */
         CHANGE,
         /**
-         * ±ê¼ÇÃ»ÓĞ±ä¸ü
+         * æ ‡è®°æ²¡æœ‰å˜æ›´
          */
         NO_CHANGE,
     }
