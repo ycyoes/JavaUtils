@@ -10,10 +10,12 @@ public class PoolDataSource {
     public static PooledDataSource createPooledDataSource(String resource) throws IOException {
         Properties props = Resources.getResourceAsProperties(resource);
         PooledDataSource ds = new PooledDataSource();
-        ds.setDriver(props.getProperty("driver"));
-        ds.setUrl(props.getProperty("url"));
-        ds.setUsername(props.getProperty("username"));
-        ds.setPassword(props.getProperty("password"));
+        ds.setDriver(props.getProperty("spring.datasource.driver-class-name"));
+        ds.setUrl(props.getProperty("spring.datasource.url"));
+        ds.setUsername(props.getProperty("spring.datasource.username"));
+        ds.setPassword(props.getProperty("spring.datasource.password"));
         return ds;
     }
+
+
 }
