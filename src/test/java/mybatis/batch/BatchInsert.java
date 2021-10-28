@@ -2,19 +2,15 @@ package mybatis.batch;
 
 
 import com.opensource.mybatis.basedata.PoolDataSource;
+import com.opensource.mybatis.first.User;
 import org.apache.ibatis.datasource.pooled.PooledDataSource;
 import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.ExecutorType;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.ibatis.session.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.IOException;
 import java.io.Reader;
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.util.Collection;
 
 public class BatchInsert {
     private static SqlSessionFactory sqlSessionFactory;
@@ -34,15 +30,17 @@ public class BatchInsert {
     public void batchInsert() {
         System.out.println("-----------test--------------");
         try(SqlSession sqlSession = sqlSessionFactory.openSession(ExecutorType.BATCH)){
-            PooledDataSource ds = PoolDataSource.createPooledDataSource("application.properties");
-            Connection conn = ds.getConnection();
-
-            System.out.println(ds.getConnection().toString());
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
+//            PooledDataSource ds = PoolDataSource.createPooledDataSource("application.properties");
+            User user = new User("Json", "json@163.com", 12, 1, "middle school");
+            User user1 = new User("mark", "mark@163.com", 12, 1, "mark middle school");
+            Configuration configuration = sqlSessionFactory.getConfiguration();
+            System.out.println(configuration.getMappedStatementNames());
+            Collection collection = configuration.getMappedStatementNames();
+            collection.forEach(col -> System.out.println(col));
+            sqlSession.insert("insert", user);
+            sqlSession.insert("insert", user1);
+            sqlSession.flushStatements();
+            sqlSession.commit();
         }
     }
 

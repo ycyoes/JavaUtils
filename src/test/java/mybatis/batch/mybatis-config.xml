@@ -40,5 +40,8 @@
 		</environment>
 	</environments>
 
+	<mappers>
+		<mapper resource="mybatis/batch/Mapper.xml" />
+	</mappers>
 
 </configuration>
