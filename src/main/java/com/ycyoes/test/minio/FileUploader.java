@@ -6,6 +6,11 @@ import io.minio.MinioClient;
 import io.minio.UploadObjectArgs;
 import io.minio.errors.MinioException;
 
+/**
+ * @description Minio上传测试
+ * @author ycyoes
+ * @version 2021-11-03
+ */
 public class FileUploader {
     public static void main(String[] args) throws Exception {
         try {
