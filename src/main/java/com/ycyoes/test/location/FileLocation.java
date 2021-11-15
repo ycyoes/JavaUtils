@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class FileLocation {
     public static void main(String[] args) throws Exception {
-        File file = new File("e:/gps.jpg");
+        File file = new File("e:/gps2.jpg");
         readImageInfo(file);
     }
 
