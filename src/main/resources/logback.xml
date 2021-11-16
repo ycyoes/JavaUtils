@@ -137,4 +137,6 @@
         <appender-ref ref="DEBUG" />
         <appender-ref ref="TRACE" />
     </root>
+    <!-- 屏蔽kafka debug -->
+    <logger name="org.apache.kafka.clients" level="ERROR" />
 </configuration>
