@@ -28,7 +28,7 @@ public class ProducerMain {
     private static Producer<String, String> createProducer() {
         //设置Producer属性
         Properties properties = new Properties();
-        properties.put("bootstrap.servers", "192.168.253.128:9092");    //设置Broker的地址
+        properties.put("bootstrap.servers", "192.168.253.129:9092");    //设置Broker的地址
         properties.put("acks", "1");    //0-不应答，1-leader应答 all-所有leader和follower应答
         properties.put("retries", 3);   //发送失败时，重试发送的次数
         properties.put("key.serializer", StringSerializer.class.getName()); //消息的key的序列化方式
