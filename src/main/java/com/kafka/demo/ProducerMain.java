@@ -17,12 +17,13 @@ public class ProducerMain {
         Producer<String, String> producer = createProducer();
 
         //创建消息，传入的三个参数分别是Topic,消息的key，消息的message
-        ProducerRecord<String, String> message = new ProducerRecord<>("TestTopic", "key", "ycyoes");
+        ProducerRecord<String, String> message = new ProducerRecord<>("TestTopic", "key", "hello");
 
         //同步发送消息
         Future<RecordMetadata> sendResultFuture = producer.send(message);
         RecordMetadata result = sendResultFuture.get();
         System.out.println("message sent to " + result.topic() + ", partition " + result.partition() + ", offset " + result.offset());
+        System.out.println("message - key: " + message.key() + " value: " + message.value());
     }
 
     private static Producer<String, String> createProducer() {
