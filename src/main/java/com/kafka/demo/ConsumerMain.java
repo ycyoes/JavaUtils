@@ -16,7 +16,7 @@ public class ConsumerMain {
         Consumer<String, String> consumer = createConsumer();
         consumer.subscribe(Collections.singleton("TestTopic"));
         while (true) {
-            ConsumerRecords records = consumer.poll(Duration.ofSeconds(1000));
+            ConsumerRecords records = consumer.poll(Duration.ofSeconds(100000));
             if (!records.isEmpty()) {
                 records.forEach(new java.util.function.Consumer<ConsumerRecord>() {
                     @Override
