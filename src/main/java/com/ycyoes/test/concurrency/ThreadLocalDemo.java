@@ -1,7 +1,5 @@
 package com.ycyoes.test.concurrency;
 
-import com.sun.jmx.snmp.ThreadContext;
-
 public class ThreadLocalDemo {
     public static void main(String[] args) {
         Thread thread = Thread.currentThread();
