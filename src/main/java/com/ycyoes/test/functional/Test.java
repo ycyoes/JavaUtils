@@ -11,7 +11,7 @@ public class Test {
 
     @org.junit.Test
     public void isBlankOrNoBlank() {
-        VUtils.isBlankOrNoBlank("hello")
+        VUtils.isBlankOrNoBlank("")
                 .presentOrElseHandle(System.out::println,
                         () -> {
                             System.out.println("空字符串");
