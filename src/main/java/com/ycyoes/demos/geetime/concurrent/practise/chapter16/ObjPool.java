@@ -1,5 +1,6 @@
 package com.ycyoes.demos.geetime.concurrent.practise.chapter16;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.Semaphore;
@@ -32,7 +33,10 @@ public class ObjPool<T, R> {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        ObjPool<Long, String> pool = new ObjPool<Long, String>(10, Long.parseLong("2"));
+        List l = new ArrayList();
+        l.add(1);
+        l.add(2);
+        ObjPool<List, String> pool = new ObjPool<List, String>(10, l);
         //通过对象池获取t,之后执行
         pool.exec(t -> {
             System.out.println(t);
