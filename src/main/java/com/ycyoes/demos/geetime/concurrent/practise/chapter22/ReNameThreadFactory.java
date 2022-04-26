@@ -4,6 +4,12 @@ import javax.validation.constraints.NotNull;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * 重新指定线程池里线程的名字
+ *
+ * @author ycyoes
+ * @date 2022-04-25 12:29
+ */
 public class ReNameThreadFactory implements ThreadFactory {
     /**
      * 线程池编号（static修饰）(容器里面所有线程池的数量)
