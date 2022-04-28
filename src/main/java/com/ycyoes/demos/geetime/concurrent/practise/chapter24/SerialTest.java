@@ -17,7 +17,7 @@ public class SerialTest {
          */
         CompletableFuture<String> f0 = CompletableFuture.supplyAsync(
                 () -> "Hello World")        //①
-                .thenApply(s -> s + "Qq")   //②
+                .thenApply(s -> s + " Qq")   //②
                 .thenApply(String::toUpperCase); //③
         System.out.println(f0.join());
     }

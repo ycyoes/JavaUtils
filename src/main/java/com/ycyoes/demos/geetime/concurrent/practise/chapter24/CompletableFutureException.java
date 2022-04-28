@@ -12,11 +12,11 @@ public class CompletableFutureException {
     public static void main(String[] args) {
         CompletableFuture<Integer> f0 = CompletableFuture.supplyAsync(() -> (7/0))
                 .thenApply(r -> r*10)
-//                .exceptionally(e -> 0);
-                .exceptionally(e -> {
-                    System.out.println(e);
-                    return null;
-                });
+                .exceptionally(e -> 0);
+//                .exceptionally(e -> {
+//                    System.out.println(e);
+//                    return null;
+//                });
         System.out.println(f0.join());
     }
 
