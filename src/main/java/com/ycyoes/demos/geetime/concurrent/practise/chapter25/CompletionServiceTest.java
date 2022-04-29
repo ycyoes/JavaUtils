@@ -58,9 +58,10 @@ public class CompletionServiceTest {
         System.out.println(r);
     }
 
-    static int geoCoderByS1() {
+    static int geoCoderByS1() throws InterruptedException {
 
         System.out.println("----------坐标转换1-----------");
+        Thread.sleep(2);
         return 1;
     }
 
