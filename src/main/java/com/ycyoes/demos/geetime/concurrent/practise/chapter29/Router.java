@@ -26,4 +26,8 @@ public final class Router {
     public int hashCode() {
         return Objects.hash(ip, port, iface);
     }
+
+    public String getIface() {
+        return iface;
+    }
 }
