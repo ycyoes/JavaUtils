@@ -36,10 +36,14 @@ public class AutoSaveEditor {
 
     //编辑操作
     void edit() {
+        change();
+    }
+
+    //改变状态
+    void change() {
         synchronized (this) {
             changed = true;
         }
-
     }
 
 }
