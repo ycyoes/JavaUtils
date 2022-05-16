@@ -4,6 +4,14 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * 线程死锁
+ *
+ * 注意： 提交到相同线程池中的任务一定是相互独立的，否则就一定要慎重。
+ * @author ycyoes
+ * @date 2022-05-16 21:39
+ */
+
 public class DeadLockTest {
     public static void main(String[] args) throws Exception {
         //L1/L2阶段共用的线程池
