@@ -9,13 +9,13 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * echo 的实现
+ * 用线程池实现的 echo 服务端
  *
  * @author ycyoes
  * @date 2022-05-16 21:39
  */
 public class WorkerThreadTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         ExecutorService es = Executors.newFixedThreadPool(500);
         final ServerSocketChannel ssc = ServerSocketChannel.open().bind(new InetSocketAddress(8080));
         //处理请求
