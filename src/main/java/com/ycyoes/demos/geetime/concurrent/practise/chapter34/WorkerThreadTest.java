@@ -5,8 +5,7 @@ import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 /**
  * 用线程池实现的 echo 服务端
@@ -16,7 +15,16 @@ import java.util.concurrent.Executors;
  */
 public class WorkerThreadTest {
     public static void main(String[] args) throws IOException {
-        ExecutorService es = Executors.newFixedThreadPool(500);
+//        ExecutorService es = Executors.newFixedThreadPool(500);
+        ExecutorService es = new ThreadPoolExecutor(50, 500, 60L, TimeUnit.SECONDS,
+                //注意要创建有界队列
+                new LinkedBlockingQueue<>(2000),
+                //建议根据业务需求实现ThreadFactory
+                r -> {
+                    return new Thread(r, "echo-" + r.hashCode());
+                },
+                //建议根据业务需要实现RejectedExecutionHandler
+                new ThreadPoolExecutor.CallerRunsPolicy());
         final ServerSocketChannel ssc = ServerSocketChannel.open().bind(new InetSocketAddress(8080));
         //处理请求
         try {
