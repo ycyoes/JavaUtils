@@ -6,6 +6,8 @@ import java.util.concurrent.Executors;
 public class PrintAsync {
     public static void main(String[] args) {
         ExecutorService pool = Executors.newSingleThreadExecutor();
+//        ExecutorService pool = Executors.newFixedThreadPool(2);
+
         pool.submit(() -> {
             try {
                 String qq = pool.submit(() -> "QQ").get();
