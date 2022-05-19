@@ -3,10 +3,29 @@ package com.ycyoes.demos.geetime.concurrent.practise.chapter38;
 import java.util.concurrent.TimeUnit;
 
 public class SimpleLimiter {
+    //当前令牌桶中的令牌数量
+    long storedPermits = 0;
+    //令牌桶的容量
+    long maxPermits = 3;
+
     //下一令牌产生时间
     long next = System.nanoTime();
     //发放令牌间隔：纳秒
     long interval = 1000_000_000;
+
+    //请求时间在下一令牌产生时间之后，则
+    //1. 重新计算令牌桶中的令牌数
+    //2. 将下一个令牌发放时间重置为当前时间
+    void resync(long now) {
+        if (now > next) {
+            //新产生的令牌数
+            long newPermits = (now - next) / interval;
+            //新令牌增加到令牌桶
+            storedPermits = Math.min(maxPermits, storedPermits + newPermits);
+            //将下一个令牌发放时间重置为当前时间
+            next = now;
+        }
+    }
     //预占令牌，返回能够获取令牌的时间
     synchronized long reserve(long now) {
         //请求时间在下一令牌产生时间之后
