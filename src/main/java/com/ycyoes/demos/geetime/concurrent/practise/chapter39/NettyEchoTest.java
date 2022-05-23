@@ -1,6 +1,5 @@
 package com.ycyoes.demos.geetime.concurrent.practise.chapter39;
 
-import com.ycyoes.demos.geetime.concurrent.practise.chapter16.ObjPool;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
