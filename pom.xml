@@ -382,6 +382,13 @@
       <version>1.10.19</version>
     </dependency>
 
+    <dependency>
+      <groupId>io.netty</groupId>
+      <artifactId>netty-all</artifactId> <!-- Use 'netty-all' for 4.0 or above -->
+      <version>4.1.77.Final</version>
+    </dependency>
+
+
   </dependencies>
 
   <build>
